@@ -1,4 +1,4 @@
-# Yaptırım Süreçleri Uygulama Kiti
+# İlköğretim Kurumları ÖDDK Uygulama Kiti
 
 Ortaokul/imam-hatip ortaokulu öğrenci davranışları için uyarma – kınama – okul değiştirme
 süreçlerini yöneten, tarayıcıda doldurulabilir ve doğrudan PDF olarak kaydedilebilir statik

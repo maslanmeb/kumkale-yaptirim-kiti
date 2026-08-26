@@ -94,7 +94,7 @@ parts.append('''<style>
 
 # ---- Header ----
 parts.append(f'<rect x="0" y="0" width="{W}" height="86" fill="{NAVY}"/>')
-parts.append(f'<text x="{W/2}" y="36" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="24" font-weight="700" fill="white">ORTAOKUL YAPTIRIM SUREÇLERI — TEK SAYFA AKIŞ ŞEMASI</text>')
+parts.append(f'<text x="{W/2}" y="36" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="24" font-weight="700" fill="white">İLKÖĞRETİM KURUMLARI ÖDDK SÜRECİ — TEK SAYFA AKIŞ ŞEMASI</text>')
 parts.append(f'<text x="{W/2}" y="62" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="13.5" fill="#CFDAE8">Dayanak: MEB Okul Öncesi Eğitim ve İlköğretim Kurumları Yönetmeliği, Md. 54-65  •  Her kutuya tıklayarak ilgili belgeye gidebilirsiniz</text>')
 
 # ---- Start ----

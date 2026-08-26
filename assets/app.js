@@ -1,5 +1,5 @@
 // =======================================================
-// Kumkale Ortaokulu — Yaptırım Süreçleri Kiti — ortak davranışlar
+// Kumkale Ortaokulu — İlköğretim Kurumları ÖDDK Kiti — ortak davranışlar
 // =======================================================
 
 const SCHOOL_KEY = "yaptirimKiti_okulAdi";
