@@ -162,7 +162,7 @@ merge_cx, merge_y = W/2, dy3 + 42 + 70
 parts.append(hlink("ek/ek-05.html", box(merge_cx-190, merge_y, 380, 62, ["Öğretmen Raporu / Kurula Sevk", "EK-5"], NAVY, NAVY, WHITE, fs=16), "EK-5: Öğretmen Raporu / Kurula Sevk Formu"))
 
 parts.append(elbow([(colA_x, dy3+39), (colA_x, merge_y+31), (merge_cx-190, merge_y+31)], color=AMBER_STROKE, label="Evet", lx=colA_x-40, ly=dy3+39+40))
-parts.append(elbow([(colB_x, col_y+62), (colB_x, merge_y-40), (merge_cx-40, merge_y-40), (merge_cx-40, merge_y)], color=CORAL_STROKE))
+parts.append(arrow(colB_x, col_y+62, merge_cx, merge_y, color=CORAL_STROKE))
 parts.append(elbow([(colC_x, col_y+62), (colC_x, merge_y+31), (merge_cx+190, merge_y+31)], color=RED_STROKE))
 
 # ---- Kurul process chain ----
