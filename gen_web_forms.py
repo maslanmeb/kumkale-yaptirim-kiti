@@ -46,8 +46,8 @@ body.append(meta_table([
 
 body.append(note_box(
     "Not",
-    "Kurulun görevi yeni kurul oluşana kadar devam eder (Md.57/6). Rehberlik öğretmeni normu "
-    "bulunmadığından kurul toplantılarına rehberlik öğretmeni katılımı bu okulda uygulanmaz; ihtiyaç "
+    "Kurulun görevi yeni kurul oluşana kadar devam eder (Md.57/6). Rehber Öğretmen / Psikolojik "
+    "Danışman kadrosu bulunmadığında kurul toplantılarına bu görevlinin katılımı aranmaz; ihtiyaç "
     "hâlinde kurul, RAM ile yazışma yoluyla görüş alabilir."
 ))
 body.append(signature_block(["Öğretmenler Kurulu Kâtibi", "Kurul Başkanı", "Okul Müdürü (Onay)"]))
@@ -106,9 +106,9 @@ body.append(meta_table([
     ("Görüşmeye Katılan Öğretmen(ler)", text_field("ogretmenAd")),
 ]))
 body.append(note_box(
-    "Rehberlik öğretmeni katılımı",
-    "Md.54/3-c uyarınca rehberlik öğretmeni &ldquo;varsa&rdquo; görüşmeye katılır. Okulumuzda kadro "
-    "bulunmadığından bu alan boş bırakılır; görüşme okul yöneticisi ve öğretmen ile yürütülür."
+    "Rehber Öğretmen / Psikolojik Danışman katılımı",
+    "Md.54/3-c uyarınca Rehber Öğretmen / Psikolojik Danışman &ldquo;varsa&rdquo; görüşmeye katılır. "
+    "Kadro bulunmadığında bu alan boş bırakılabilir; görüşme okul yöneticisi ve öğretmen ile de yürütülebilir."
 ))
 body.append(section_title("Öğrencinin Sürdürdüğü Olumsuz Davranış ve Daha Önce Uygulanan Aşamalar"))
 body.append(textarea("davranisGecmis", "", rows=3))
@@ -187,8 +187,8 @@ body.append(meta_table([
     ("Eşlik Eden Öğretmen", text_field("ogretmenAd")),
 ]))
 body.append(para(
-    "Rehberlik öğretmeni normu bulunmadığından, Md.60/1 uyarınca ifade alma işlemine bir öğretmen "
-    "eşlik eder.", cls="section-sub"
+    "Rehber Öğretmen / Psikolojik Danışman normu bulunmadığında, Md.60/1 uyarınca ifade alma işlemine "
+    "bir öğretmen eşlik eder.", cls="section-sub"
 ))
 body.append(section_title("İfade Metni"))
 body.append(textarea("ifadeMetni", "", rows=6))
