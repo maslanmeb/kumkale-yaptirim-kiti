@@ -43,6 +43,15 @@ function initAutoGrow() {
   });
 }
 
+/* ---------- Yazdır / PDF Al (baskı öncesi kutuları kesin olarak büyüt) ---------- */
+function printForm() {
+  document.querySelectorAll("textarea").forEach(autoGrow);
+  requestAnimationFrame(() => {
+    document.querySelectorAll("textarea").forEach(autoGrow);
+    setTimeout(() => window.print(), 30);
+  });
+}
+
 /* ---------- Kapatılabilir bilgi kutuları ---------- */
 function initNoteBoxes() {
   document.querySelectorAll(".note-box").forEach((box) => {

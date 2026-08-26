@@ -126,12 +126,15 @@ textarea{
   padding: 9px;
   outline:none;
   background: transparent;
-  resize: none;
+  resize: vertical;
   overflow: hidden;
   line-height: 1.5;
   min-height: 42px;
 }
 textarea::placeholder{ color:#a8a8a8; font-style: italic; }
+@supports (field-sizing: content) {
+  textarea{ field-sizing: content; max-height: none; }
+}
 
 .para{ font-size:10.6pt; line-height:1.55; text-align:justify; margin:16px 0; font-family: Arial, sans-serif; color:#222;}
 
@@ -236,9 +239,10 @@ table.imza td{ width:33.33%; vertical-align:top; padding:0 6px; text-align:cente
 @media print{
   body{ background:none; margin:0; padding:0; }
   .toolbar{ display:none; }
-  .page{ box-shadow:none; margin:0; width:auto; min-height:0; }
-  @page{ size: A4; margin: 14mm 16mm; }
+  .page{ box-shadow:none; margin:0; width:auto; min-height:0; padding: 0; }
+  @page{ size: A4; margin: 13mm 15mm; }
   textarea, input{ border-color:#000 !important; }
+  textarea{ overflow: visible !important; resize: none !important; }
   .dyn-remove{ display:none; }
   .note-close{ display:none; }
   a.hotspot{ outline:none !important; }
