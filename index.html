@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yaptırım Süreçleri Kiti — Kumkale Ortaokulu</title>
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  body{ background: #f3f4f6; font-family: Arial, Helvetica, sans-serif; padding: 0 0 60px; }
+  .wrap{ max-width: 980px; margin: 0 auto; padding: 0 18px; }
+
+  .hero{
+    background: linear-gradient(135deg, #1F3864, #2b4d82);
+    color: #fff;
+    padding: 34px 0 40px;
+    margin-bottom: 28px;
+  }
+  .hero .wrap{ display:flex; flex-direction:column; gap: 10px; }
+  .hero .school-line{
+    color:#fff;
+    border-bottom: 1px solid rgba(255,255,255,0.5);
+    font-size: 15pt;
+    max-width: 560px;
+  }
+  .hero .school-hint{ color: rgba(255,255,255,0.65); }
+  .hero h1{ color:#fff; font-size: 24px; text-align:left; margin: 6px 0 2px; letter-spacing:0; font-family: Georgia, serif;}
+  .hero p{ margin: 0; font-size: 14.5px; line-height:1.6; color: #dbe4f2; max-width: 640px; }
+  .hero .actions{ margin-top: 10px; display:flex; gap: 10px; flex-wrap: wrap; }
+  .hero .actions a{
+    display:inline-block;
+    background: #fff;
+    color: #1F3864;
+    text-decoration:none;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 11px 20px;
+    border-radius: 7px;
+  }
+  .hero .actions a.secondary{
+    background: transparent;
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.55);
+  }
+
+  .diagram-card{
+    background:#fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 14px rgba(0,0,0,0.08);
+    padding: 18px;
+    margin-bottom: 30px;
+  }
+  .diagram-card h2{ font-size: 16px; color:#1F3864; margin: 2px 4px 2px; font-family: Georgia, serif;}
+  .diagram-card .desc{ font-size: 13px; color:#666; margin: 0 4px 14px; }
+  .diagram-frame{ width:100%; overflow-x:auto; }
+  .diagram-frame svg.diagram-svg{ width: 100%; max-width: 560px; display:block; margin: 0 auto; height: auto; }
+
+  .grid-title{ font-size: 17px; color:#1F3864; margin: 6px 4px 14px; font-family: Georgia, serif; }
+  .card-grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 14px;
+  }
+  .card{
+    background:#fff;
+    border-radius: 9px;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.07);
+    padding: 16px 16px 14px;
+    text-decoration:none;
+    color: inherit;
+    display:flex;
+    flex-direction:column;
+    gap: 6px;
+    border-top: 4px solid #cfd6e0;
+    transition: transform .12s ease, box-shadow .12s ease;
+  }
+  .card:hover{ transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.12); }
+  .card .tag{ font-size: 11px; font-weight:700; color:#1F3864; letter-spacing:.4px; }
+  .card .title{ font-size: 14px; font-weight:700; color:#222; line-height:1.35; }
+  .card .sub{ font-size: 11.5px; color:#888; }
+
+  .card.guide{ border-top-color:#1F3864; background: #eef2f8; }
+  .card.amber{ border-top-color:#D68910; }
+  .card.blue{ border-top-color:#2E5C8A; }
+  .card.coral{ border-top-color:#C0562A; }
+  .card.red{ border-top-color:#C0392B; }
+  .card.gray{ border-top-color:#7F8C8D; }
+  .card.green{ border-top-color:#1E8449; }
+
+  footer{ text-align:center; font-size:12px; color:#9aa0a6; margin-top: 44px; padding: 0 16px; line-height:1.6;}
+</style>
+</head>
+<body>
+
+  <div class="hero">
+    <div class="wrap">
+      <div class="school-line" id="okulAdi" contenteditable="true" spellcheck="false"></div>
+      <div class="school-hint">↑ Farklı bir okulda kullanıyorsanız bu satırı tıklayıp okul adını değiştirebilirsiniz. (Tüm formlarda hatırlanır.)</div>
+      <h1>Yaptırım Süreçleri Uygulama Kiti</h1>
+      <p>Ortaokul/imam-hatip ortaokulu öğrenci davranışları için uyarma – kınama – okul değiştirme süreçlerini yöneten, doldurulabilir ve doğrudan PDF olarak kaydedilebilir belge seti. MEB Okul Öncesi Eğitim ve İlköğretim Kurumları Yönetmeliği Md.54-65 esas alınmıştır.</p>
+      <div class="actions">
+        <a href="kilavuz.html">📘 Kılavuzu Oku</a>
+        <a href="#belgeler" class="secondary">📄 Tüm Belgeler</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+
+    <div class="diagram-card">
+      <h2>Tek Sayfa Akış Şeması</h2>
+      <p class="desc">Bir olayla karşılaştığınızda hangi belgeyi kullanacağınızı görmek için şemadaki kutulara tıklayın — ilgili form doğrudan açılır.</p>
+      <div class="diagram-frame">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1240 2366" class="diagram-svg" role="img" aria-label="Yaptırım süreçleri akış şeması">
+<rect x="0" y="0" width="1240" height="2366" fill="#FFFFFF"/>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1L9 5L1 9Z" fill="#595959"/></marker>
+<marker id="arrowNavy" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1L9 5L1 9Z" fill="#1F3864"/></marker></defs>
+<style>
+  a.hotspot { cursor: pointer; }
+  a.hotspot rect { transition: filter .12s ease, stroke-width .12s ease; }
+  a.hotspot:hover rect { filter: brightness(0.94); stroke-width: 3; }
+  a.hotspot:focus rect { outline: 2px solid #2b6cb0; }
+</style>
+<rect x="0" y="0" width="1240" height="86" fill="#1F3864"/>
+<text x="620.0" y="36" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="24" font-weight="700" fill="white">ORTAOKUL YAPTIRIM SUREÇLERI — TEK SAYFA AKIŞ ŞEMASI</text>
+<text x="620.0" y="62" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="13.5" fill="#CFDAE8">Dayanak: MEB Okul Öncesi Eğitim ve İlköğretim Kurumları Yönetmeliği, Md. 54-65  •  Her kutuya tıklayarak ilgili belgeye gidebilirsiniz</text>
+<rect x="450.0" y="110" width="340" height="56" rx="10" fill="#1F3864" stroke="#1F3864" stroke-width="1.6"/>
+<text x="620.0" y="143.12" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="16" font-weight="700" fill="#FFFFFF">Olumsuz davranış gözlemlendi</text>
+<line x1="620.0" y1="166" x2="620.0" y2="174" stroke="#595959" stroke-width="1.8" marker-end="url(#arrow)"/>
+<polygon points="620.0,178.0 770.0,232 620.0,286.0 470.0,232" fill="#ECECEC" stroke="#7F8C8D" stroke-width="1.6"/>
+<text x="620.0" y="227.39" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="14.5" font-weight="600" fill="#4D5656">Davranış Md.55'te</text>
+<text x="620.0" y="245.89" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="14.5" font-weight="600" fill="#4D5656">hangi grupta?</text>
+<rect x="25.0" y="400" width="300" height="62" rx="10" fill="#FDEBD0" stroke="#D68910" stroke-width="1.6"/>
+<text x="175.0" y="425.8" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="15" font-weight="700" fill="#7E4E0B">a) Uyarma davranışı</text>
+<text x="175.0" y="445.8" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="13.5" font-weight="400" fill="#7E4E0B">(Md.55/a)</text>
+<rect x="470.0" y="400" width="300" height="62" rx="10" fill="#FDE3D8" stroke="#C0562A" stroke-width="1.6"/>
+<text x="620.0" y="425.8" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="15" font-weight="700" fill="#7A3013">b) Kınama davranışı</text>
+<text x="620.0" y="445.8" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="13.5" font-weight="400" fill="#7A3013">(Md.55/b)</text>
+<rect x="915.0" y="400" width="300" height="62" rx="10" fill="#FADBD8" stroke="#C0392B" stroke-width="1.6"/>
+<text x="1065.0" y="425.8" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="15" font-weight="700" fill="#78241C">c) Okul değiştirme davranışı</text>
+<text x="1065.0" y="445.8" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="13.5" font-weight="400" fill="#78241C">(Md.55/c)</text>
+<path d="M 470.0 232 L 175 232 L 175 400" fill="none" stroke="#D68910" stroke-width="1.8" marker-end="url(#arrow)"/>
+<line x1="620.0" y1="286" x2="620.0" y2="400" stroke="#C0562A" stroke-width="1.8" marker-end="url(#arrow)"/>
+<path d="M 770.0 232 L 1065 232 L 1065 400" fill="none" stroke="#C0392B" stroke-width="1.8" marker-end="url(#arrow)"/>
+<line x1="175" y1="462" x2="175" y2="502" stroke="#D68910" stroke-width="1.8" marker-end="url(#arrow)"/>
+<a href="ek/ek-02.html" class="hotspot"><title>EK-2: Sözlü Uyarma Görüşme Notu</title><rect x="25.0" y="502" width="300" height="58" rx="10" fill="#FFFFFF" stroke="#D68910" stroke-width="1.6"/>
+<text x="175.0" y="525.8" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="15" font-weight="700" fill="#7E4E0B">1) Sözlü Uyarma</text>
+<text x="175.0" y="545.8" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="13.5" font-weight="400" fill="#7E4E0B">EK-2</text></a>
+<line x1="175" y1="560" x2="175" y2="577" stroke="#D68910" stroke-width="1.8" marker-end="url(#arrow)"/>
+<polygon points="175,577.0 260.0,616 175,655.0 90.0,616" fill="#FDEBD0" stroke="#D68910" stroke-width="1.6"/>
+<text x="175" y="611.66" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="13" font-weight="600" fill="#7E4E0B">Davranış</text>
+<text x="175" y="628.66" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="13" font-weight="600" fill="#7E4E0B">sürüyor mu?</text>
+<line x1="175" y1="655" x2="175" y2="698" stroke="#D68910" stroke-width="1.8" marker-end="url(#arrow)"/>
+<rect x="207" y="664.0" width="1" height="1" fill="none"/>
+<text x="209" y="676.5" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="12.5" font-weight="600" fill="#D68910">Evet</text>
+<a href="ek/ek-03.html" class="hotspot"><title>EK-3: Öğrenci Sözleşmesi</title><rect x="25.0" y="698" width="300" height="58" rx="10" fill="#FFFFFF" stroke="#D68910" stroke-width="1.6"/>
+<text x="175.0" y="721.8" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="15" font-weight="700" fill="#7E4E0B">2) Öğrenci Sözleşmesi</text>
+<text x="175.0" y="741.8" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="13.5" font-weight="400" fill="#7E4E0B">EK-3</text></a>
+<line x1="175" y1="756" x2="175" y2="773" stroke="#D68910" stroke-width="1.8" marker-end="url(#arrow)"/>
+<polygon points="175,773.0 260.0,812 175,851.0 90.0,812" fill="#FDEBD0" stroke="#D68910" stroke-width="1.6"/>
+<text x="175" y="807.66" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="13" font-weight="600" fill="#7E4E0B">Davranış</text>
+<text x="175" y="824.66" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="13" font-weight="600" fill="#7E4E0B">sürüyor mu?</text>
+<line x1="175" y1="851" x2="175" y2="894" stroke="#D68910" stroke-width="1.8" marker-end="url(#arrow)"/>
+<rect x="207" y="860.0" width="1" height="1" fill="none"/>
+<text x="209" y="872.5" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="12.5" font-weight="600" fill="#D68910">Evet</text>
+<a href="ek/ek-04.html" class="hotspot"><title>EK-4: Veli Görüşme Tutanağı</title><rect x="25.0" y="894" width="300" height="58" rx="10" fill="#FFFFFF" stroke="#D68910" stroke-width="1.6"/>
+<text x="175.0" y="917.8" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="15" font-weight="700" fill="#7E4E0B">3) Veli Görüşmesi</text>
+<text x="175.0" y="937.8" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="13.5" font-weight="400" fill="#7E4E0B">EK-4</text></a>
+<line x1="175" y1="952" x2="175" y2="969" stroke="#D68910" stroke-width="1.8" marker-end="url(#arrow)"/>
+<polygon points="175,969.0 260.0,1008 175,1047.0 90.0,1008" fill="#FDEBD0" stroke="#D68910" stroke-width="1.6"/>
+<text x="175" y="1003.66" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="13" font-weight="600" fill="#7E4E0B">Davranış</text>
+<text x="175" y="1020.66" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="13" font-weight="600" fill="#7E4E0B">sürüyor mu?</text>
+<line x1="260" y1="616" x2="272" y2="616" stroke="#595959" stroke-width="1.6" marker-end="url(#arrow)"/>
+<rect x="272" y="593.0" width="182" height="46" rx="10" fill="#EDEDED" stroke="#595959" stroke-width="1.6"/>
+<text x="363.0" y="611.34" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="12" font-weight="700" fill="#4D5656">Hayır:</text>
+<text x="363.0" y="628.34" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#4D5656">kayda geçirilir, biter</text>
+<line x1="260" y1="812" x2="272" y2="812" stroke="#595959" stroke-width="1.6" marker-end="url(#arrow)"/>
+<rect x="272" y="789.0" width="182" height="46" rx="10" fill="#EDEDED" stroke="#595959" stroke-width="1.6"/>
+<text x="363.0" y="807.34" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="12" font-weight="700" fill="#4D5656">Hayır:</text>
+<text x="363.0" y="824.34" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#4D5656">kayda geçirilir, biter</text>
+<line x1="260" y1="1008" x2="272" y2="1008" stroke="#595959" stroke-width="1.6" marker-end="url(#arrow)"/>
+<rect x="272" y="985.0" width="182" height="46" rx="10" fill="#EDEDED" stroke="#595959" stroke-width="1.6"/>
+<text x="363.0" y="1003.34" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="12" font-weight="700" fill="#4D5656">Hayır:</text>
+<text x="363.0" y="1020.34" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="10.5" font-weight="400" fill="#4D5656">kayda geçirilir, biter</text>
+<a href="ek/ek-05.html" class="hotspot"><title>EK-5: Öğretmen Raporu / Kurula Sevk Formu</title><rect x="430.0" y="1120" width="380" height="62" rx="10" fill="#1F3864" stroke="#1F3864" stroke-width="1.6"/>
+<text x="620.0" y="1145.62" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="16" font-weight="700" fill="#FFFFFF">Öğretmen Raporu / Kurula Sevk</text>
+<text x="620.0" y="1166.62" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="14.5" font-weight="400" fill="#FFFFFF">EK-5</text></a>
+<path d="M 175 1047 L 175 1151 L 430.0 1151" fill="none" stroke="#D68910" stroke-width="1.8" marker-end="url(#arrow)"/>
+<text x="135" y="1087" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="12.5" font-weight="600" fill="#D68910">Evet</text>
+<path d="M 620.0 462 L 620.0 1080 L 580.0 1080 L 580.0 1120" fill="none" stroke="#C0562A" stroke-width="1.8" marker-end="url(#arrow)"/>
+<path d="M 1065 462 L 1065 1151 L 810.0 1151" fill="none" stroke="#C0392B" stroke-width="1.8" marker-end="url(#arrow)"/>
+<line x1="620.0" y1="1182" x2="620.0" y2="1228" stroke="#1F3864" stroke-width="1.8" marker-end="url(#arrow)"/>
+<a href="ek/ek-06.html" class="hotspot"><title>EK-6: Kurul Toplantı Çağrısı ve Gündemi</title><rect x="430.0" y="1228" width="380" height="56" rx="10" fill="#D6E4F0" stroke="#2E5C8A" stroke-width="1.6"/>
+<text x="620.0" y="1250.98" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="14" font-weight="700" fill="#1B3A57">Kurul Toplantı Çağrısı ve Gündemi — EK-6</text>
+<text x="620.0" y="1269.98" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#1B3A57">(en geç 5 iş günü içinde çağrılır)</text></a>
+<line x1="620.0" y1="1284" x2="620.0" y2="1328" stroke="#2E5C8A" stroke-width="1.8" marker-end="url(#arrow)"/>
+<a href="ek/ek-07.html" class="hotspot"><title>EK-7: İfade Alma Tutanağı</title><rect x="430.0" y="1328" width="380" height="56" rx="10" fill="#D6E4F0" stroke="#2E5C8A" stroke-width="1.6"/>
+<text x="620.0" y="1350.98" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="14" font-weight="700" fill="#1B3A57">İfade Alma Tutanağı — EK-7</text>
+<text x="620.0" y="1369.98" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#1B3A57">(öğrenci ve tanıklar)</text></a>
+<line x1="620.0" y1="1384" x2="620.0" y2="1428" stroke="#2E5C8A" stroke-width="1.8" marker-end="url(#arrow)"/>
+<a href="ek/ek-08.html" class="hotspot"><title>EK-8: Kurul Karar Tutanağı</title><rect x="430.0" y="1428" width="380" height="56" rx="10" fill="#D6E4F0" stroke="#2E5C8A" stroke-width="1.6"/>
+<text x="620.0" y="1450.98" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="14" font-weight="700" fill="#1B3A57">Kurul Karar Tutanağı — EK-8</text>
+<text x="620.0" y="1469.98" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="12.5" font-weight="400" fill="#1B3A57">(en geç 5 iş günü içinde karara bağlanır)</text></a>
+<line x1="620.0" y1="1484" x2="620.0" y2="1494" stroke="#2E5C8A" stroke-width="1.8" marker-end="url(#arrow)"/>
+<polygon points="620.0,1496.0 750.0,1550 620.0,1604.0 490.0,1550" fill="#ECECEC" stroke="#7F8C8D" stroke-width="1.6"/>
+<text x="620.0" y="1554.8" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="15" font-weight="600" fill="#4D5656">Karar türü?</text>
+<path d="M 490.0 1550 L 290.0 1550 L 290.0 1648" fill="none" stroke="#C0562A" stroke-width="1.8" marker-end="url(#arrow)"/>
+<text x="360.0" y="1536" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="12.5" font-weight="600" fill="#C0562A">Uyarma / Kınama</text>
+<rect x="135.0" y="1648" width="310" height="56" rx="10" fill="#FDE3D8" stroke="#C0562A" stroke-width="1.6"/>
+<text x="290.0" y="1680.64" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="14.5" font-weight="700" fill="#7A3013">Okul Müdürünün Onayı</text>
+<line x1="290.0" y1="1704" x2="290.0" y2="1744" stroke="#C0562A" stroke-width="1.8" marker-end="url(#arrow)"/>
+<a href="ek/ek-09.html" class="hotspot"><title>EK-9: Kararın Veliye Tebliğ Formu</title><rect x="135.0" y="1744" width="310" height="56" rx="10" fill="#FDE3D8" stroke="#C0562A" stroke-width="1.6"/>
+<text x="290.0" y="1776.64" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="14.5" font-weight="700" fill="#7A3013">Veliye Tebliğ — EK-9</text></a>
+<line x1="290.0" y1="1800" x2="290.0" y2="1840" stroke="#C0562A" stroke-width="1.8" marker-end="url(#arrow)"/>
+<rect x="135.0" y="1840" width="310" height="50" rx="10" fill="#FDE3D8" stroke="#C0562A" stroke-width="1.6"/>
+<text x="290.0" y="1869.48" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="14" font-weight="700" fill="#7A3013">e-Okul sistemine işlenir</text>
+<path d="M 750.0 1550 L 950.0 1550 L 950.0 1648" fill="none" stroke="#C0392B" stroke-width="1.8" marker-end="url(#arrow)"/>
+<text x="890.0" y="1536" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="12.5" font-weight="600" fill="#C0392B">Okul Değiştirme</text>
+<a href="ek/ek-10.html" class="hotspot"><title>EK-10: İlçe Kuruluna Gönderme Üst Yazısı</title><rect x="795.0" y="1648" width="310" height="62" rx="10" fill="#FADBD8" stroke="#C0392B" stroke-width="1.6"/>
+<text x="950.0" y="1674.07" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="13.5" font-weight="700" fill="#78241C">İlçe Kuruluna Gönderme — EK-10</text>
+<text x="950.0" y="1692.57" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="12.0" font-weight="400" fill="#78241C">(en geç 5 iş günü)</text></a>
+<line x1="950.0" y1="1710" x2="950.0" y2="1750" stroke="#C0392B" stroke-width="1.8" marker-end="url(#arrow)"/>
+<rect x="795.0" y="1750" width="310" height="62" rx="10" fill="#FADBD8" stroke="#C0392B" stroke-width="1.6"/>
+<text x="950.0" y="1776.07" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="13.5" font-weight="700" fill="#78241C">İlçe Kurulu Kararı</text>
+<text x="950.0" y="1794.57" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="12.0" font-weight="400" fill="#78241C">(≤5 iş günü toplanır, ≤15 gün karar)</text>
+<line x1="950.0" y1="1812" x2="950.0" y2="1852" stroke="#C0392B" stroke-width="1.8" marker-end="url(#arrow)"/>
+<a href="ek/ek-09.html" class="hotspot"><title>EK-9: Kararın Veliye Tebliğ Formu</title><rect x="795.0" y="1852" width="310" height="56" rx="10" fill="#FADBD8" stroke="#C0392B" stroke-width="1.6"/>
+<text x="950.0" y="1884.64" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="14.5" font-weight="700" fill="#78241C">Veliye Tebliğ — EK-9</text></a>
+<line x1="950.0" y1="1908" x2="950.0" y2="1948" stroke="#C0392B" stroke-width="1.8" marker-end="url(#arrow)"/>
+<rect x="795.0" y="1948" width="310" height="50" rx="10" fill="#FADBD8" stroke="#C0392B" stroke-width="1.6"/>
+<text x="950.0" y="1977.48" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="14" font-weight="700" fill="#78241C">e-Okul sistemine işlenir</text>
+<path d="M 290.0 1890 L 290.0 2014 L 620.0 2014" fill="none" stroke="#595959" stroke-width="1.8" marker-end="url(#arrow)"/>
+<path d="M 950.0 1998 L 950.0 2014 L 620.0 2014" fill="none" stroke="#595959" stroke-width="1.8" marker-end="url(#arrow)"/>
+<polygon points="620.0,2014.0 770.0,2068 620.0,2122.0 470.0,2068" fill="#ECECEC" stroke="#7F8C8D" stroke-width="1.6"/>
+<text x="620.0" y="2063.57" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="13.5" font-weight="600" fill="#4D5656">Veli itiraz etti mi?</text>
+<text x="620.0" y="2081.07" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="13.5" font-weight="600" fill="#4D5656">(tebliğden itibaren 5 iş günü)</text>
+<path d="M 770.0 2068 L 950.0 2068 L 950.0 2068" fill="none" stroke="#7F8C8D" stroke-width="1.8" marker-end="url(#arrow)"/>
+<text x="770.0" y="2056" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="12.5" font-weight="600" fill="#7F8C8D">Evet</text>
+<a href="ek/ek-11.html" class="hotspot"><title>EK-11: Veli İtiraz Dilekçesi Örneği</title><rect x="790.0" y="2038" width="320" height="62" rx="10" fill="#ECECEC" stroke="#7F8C8D" stroke-width="1.6"/>
+<text x="950.0" y="2064.16" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="13" font-weight="700" fill="#4D5656">İtiraz Dilekçesi — EK-11</text>
+<text x="950.0" y="2082.16" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="11.5" font-weight="400" fill="#4D5656">(itiraz sonuçlanana dek yaptırım uygulanmaz)</text></a>
+<line x1="620.0" y1="2122" x2="620.0" y2="2168" stroke="#1E8449" stroke-width="1.8" marker-end="url(#arrow)"/>
+<rect x="658.0" y="2132.5" width="1" height="1" fill="none"/>
+<text x="660.0" y="2145.0" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="12.5" font-weight="600" fill="#1E8449">Hayır</text>
+<rect x="450.0" y="2168" width="340" height="58" rx="10" fill="#D5F0DD" stroke="#1E8449" stroke-width="1.6"/>
+<text x="620.0" y="2202.12" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="16" font-weight="700" fill="#145A32">SÜREÇ TAMAMLANDI</text>
+<rect x="870" y="170" width="320" height="108" rx="8" fill="#FFF6D9" stroke="#BF8F00" stroke-width="1.4"/>
+<rect x="870" y="170" width="6" height="108" fill="#BF8F00"/>
+<text x="888" y="192" font-family="Calibri, Arial, sans-serif" font-size="13.5" font-weight="700" fill="#7F6000">Tekrar kuralı (Md.56/5)</text>
+<text x="888" y="214" font-family="Calibri, Arial, sans-serif" font-size="12.5" fill="#7F6000">Aynı eğitim-öğretim yılı içinde davranış</text>
+<text x="888" y="231" font-family="Calibri, Arial, sans-serif" font-size="12.5" fill="#7F6000">tekrarlanırsa bir üst yaptırım uygulanır:</text>
+<text x="888" y="248" font-family="Calibri, Arial, sans-serif" font-size="12.5" fill="#7F6000">Uyarma → Kınama → Okul Değiştirme.</text>
+<rect x="150" y="2154" width="340" height="92" rx="8" fill="#FFF6D9" stroke="#BF8F00" stroke-width="1.4"/>
+<rect x="150" y="2154" width="6" height="92" fill="#BF8F00"/>
+<text x="168" y="2176" font-family="Calibri, Arial, sans-serif" font-size="13.5" font-weight="700" fill="#7F6000">Düzelme hâlinde (Md.62/3)</text>
+<text x="168" y="2198" font-family="Calibri, Arial, sans-serif" font-size="12.5" fill="#7F6000">Öğrenci davranışını tekrarlamaz ve olumlu</text>
+<text x="168" y="2215" font-family="Calibri, Arial, sans-serif" font-size="12.5" fill="#7F6000">davranış sergilerse, dönem sonu kurul</text>
+<text x="168" y="2232" font-family="Calibri, Arial, sans-serif" font-size="12.5" fill="#7F6000">toplantısında EK-12 ile yaptırım kaldırılabilir.</text>
+<rect x="470.0" y="1654" width="300" height="106" rx="8" fill="#FFF6D9" stroke="#BF8F00" stroke-width="1.4"/>
+<rect x="470.0" y="1654" width="6" height="106" fill="#BF8F00"/>
+<text x="488.0" y="1676" font-family="Calibri, Arial, sans-serif" font-size="13.5" font-weight="700" fill="#7F6000">Nakil gidilecek okul yoksa (Md.56/7)</text>
+<text x="488.0" y="1698" font-family="Calibri, Arial, sans-serif" font-size="12.5" fill="#7F6000">Yerleşim biriminde nakledilebileceği</text>
+<text x="488.0" y="1715" font-family="Calibri, Arial, sans-serif" font-size="12.5" fill="#7F6000">başka ortaokul yoksa, yaptırım bir alt</text>
+<text x="488.0" y="1732" font-family="Calibri, Arial, sans-serif" font-size="12.5" fill="#7F6000">derece olan KINAMA olarak uygulanır.</text>
+<line x1="60" y1="2278" x2="1180" y2="2278" stroke="#EDEDED" stroke-width="1.5"/>
+<rect x="70" y="2296" width="22" height="16" rx="3" fill="#FDEBD0" stroke="#D68910" stroke-width="1.3"/>
+<text x="100" y="2309" font-family="Calibri, Arial, sans-serif" font-size="13" fill="#595959">Uyarma süreci</text>
+<rect x="329" y="2296" width="22" height="16" rx="3" fill="#FDE3D8" stroke="#C0562A" stroke-width="1.3"/>
+<text x="359" y="2309" font-family="Calibri, Arial, sans-serif" font-size="13" fill="#595959">Kınama</text>
+<rect x="483" y="2296" width="22" height="16" rx="3" fill="#FADBD8" stroke="#C0392B" stroke-width="1.3"/>
+<text x="513" y="2309" font-family="Calibri, Arial, sans-serif" font-size="13" fill="#595959">Okul değiştirme</text>
+<rect x="772" y="2296" width="22" height="16" rx="3" fill="#D6E4F0" stroke="#2E5C8A" stroke-width="1.3"/>
+<text x="802" y="2309" font-family="Calibri, Arial, sans-serif" font-size="13" fill="#595959">Ortak kurul adımları</text>
+<rect x="1136" y="2296" width="22" height="16" rx="3" fill="#D5F0DD" stroke="#1E8449" stroke-width="1.3"/>
+<text x="1166" y="2309" font-family="Calibri, Arial, sans-serif" font-size="13" fill="#595959">Süreç sonu</text>
+<rect x="1350" y="2296" width="22" height="16" rx="3" fill="#ECECEC" stroke="#7F8C8D" stroke-width="1.3"/>
+<text x="1380" y="2309" font-family="Calibri, Arial, sans-serif" font-size="13" fill="#595959">Nötr / itiraz</text>
+<text x="620.0" y="2336" text-anchor="middle" font-family="Calibri, Arial, sans-serif" font-size="11.5" fill="#9AA0A6">Millî Eğitim Bakanlığı Okul Öncesi Eğitim ve İlköğretim Kurumları Yönetmeliği Md.54-65 esas alınarak hazırlanmıştır — yalnızca ortaokul/imam-hatip ortaokulu kademesi içindir.</text>
+</svg>
+      </div>
+    </div>
+
+    <h2 class="grid-title" id="belgeler">Tüm Belgeler</h2>
+    <div class="card-grid">
+
+      <a class="card guide" href="kilavuz.html">
+        <span class="tag">KILAVUZ</span>
+        <span class="title">Uygulama Kılavuzu</span>
+        <span class="sub">Kurul oluşturma, süreç akışı, süre çizelgesi</span>
+      </a>
+
+      <a class="card gray" href="ek/ek-01.html">
+        <span class="tag">EK-1</span>
+        <span class="title">Kurul Oluşturma Tutanağı</span>
+        <span class="sub">Md.57</span>
+      </a>
+      <a class="card amber" href="ek/ek-02.html">
+        <span class="tag">EK-2</span>
+        <span class="title">Sözlü Uyarma Görüşme Notu</span>
+        <span class="sub">Md.54/3-a</span>
+      </a>
+      <a class="card amber" href="ek/ek-03.html">
+        <span class="tag">EK-3</span>
+        <span class="title">Öğrenci Sözleşmesi</span>
+        <span class="sub">Md.54/3-b</span>
+      </a>
+      <a class="card amber" href="ek/ek-04.html">
+        <span class="tag">EK-4</span>
+        <span class="title">Veli Görüşme Tutanağı</span>
+        <span class="sub">Md.54/3-c</span>
+      </a>
+      <a class="card blue" href="ek/ek-05.html">
+        <span class="tag">EK-5</span>
+        <span class="title">Öğretmen Raporu / Kurula Sevk</span>
+        <span class="sub">Md.54/3-c, Md.58/f</span>
+      </a>
+      <a class="card blue" href="ek/ek-06.html">
+        <span class="tag">EK-6</span>
+        <span class="title">Kurul Toplantı Çağrısı ve Gündemi</span>
+        <span class="sub">Md.59/1</span>
+      </a>
+      <a class="card blue" href="ek/ek-07.html">
+        <span class="tag">EK-7</span>
+        <span class="title">İfade Alma Tutanağı</span>
+        <span class="sub">Md.60/1-2</span>
+      </a>
+      <a class="card blue" href="ek/ek-08.html">
+        <span class="tag">EK-8</span>
+        <span class="title">Kurul Karar Tutanağı</span>
+        <span class="sub">Md.60/3</span>
+      </a>
+      <a class="card coral" href="ek/ek-09.html">
+        <span class="tag">EK-9</span>
+        <span class="title">Kararın Veliye Tebliğ Formu</span>
+        <span class="sub">Md.62/1-2</span>
+      </a>
+      <a class="card red" href="ek/ek-10.html">
+        <span class="tag">EK-10</span>
+        <span class="title">İlçe Kuruluna Gönderme Yazısı</span>
+        <span class="sub">Md.61</span>
+      </a>
+      <a class="card gray" href="ek/ek-11.html">
+        <span class="tag">EK-11</span>
+        <span class="title">Veli İtiraz Dilekçesi Örneği</span>
+        <span class="sub">Md.56/11-12</span>
+      </a>
+      <a class="card green" href="ek/ek-12.html">
+        <span class="tag">EK-12</span>
+        <span class="title">Yaptırımın Dosyadan Kaldırılması</span>
+        <span class="sub">Md.62/3</span>
+      </a>
+    </div>
+
+    <footer>
+      Millî Eğitim Bakanlığı Okul Öncesi Eğitim ve İlköğretim Kurumları Yönetmeliği Md.54-65 esas alınarak hazırlanmıştır — yalnızca ortaokul/imam-hatip ortaokulu kademesi içindir.<br>
+      Tüm formlar tarayıcınızda doldurulur; hiçbir veri sunucuya gönderilmez, yalnızca bu cihazda saklanır.
+    </footer>
+  </div>
+
+<script src="assets/app.js"></script>
+</body>
+</html>

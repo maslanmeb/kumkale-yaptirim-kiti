@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EK-10 İLÇE ÖĞRENCİ DAVRANIŞLARINI DEĞERLENDİRME KURULUNA GÖNDERME ÜST YAZISI VE DOSYA LİSTESİ</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+  <div class="toolbar">
+    <a class="back" href="../index.html">&larr; Ana Sayfa</a>
+    <span class="hint">Alanları doldurun, ardından &quot;Yazdır / PDF Al&quot; ile A4 boyutunda PDF olarak kaydedin.</span>
+    <div class="btns">
+      <button class="secondary" type="button" onclick="clearForm()">Formu Temizle</button>
+      <button type="button" onclick="window.print()">🖨️ Yazdır / PDF Al</button>
+    </div>
+  </div>
+
+  <div class="page">
+    <div class="school-line" id="okulAdi" contenteditable="true" spellcheck="false"></div>
+    <div class="school-hint">↑ Farklı okul için bu satırı tıklayıp değiştirebilirsiniz</div>
+    <div class="school-sub">Öğrenci Davranışlarını Değerlendirme Süreci</div>
+
+    <div class="ek-tag">EK-10</div>
+    <h1>İLÇE ÖĞRENCİ DAVRANIŞLARINI DEĞERLENDİRME KURULUNA GÖNDERME ÜST YAZISI VE DOSYA LİSTESİ</h1>
+    <div class="dayanak">Dayanak: Md.61/1-2 — yalnızca Okul Değiştirme kararlarında kullanılır</div>
+
+    <table class="meta">
+      <tr><td class="label">İlçe Millî Eğitim Müdürlüğüne</td><td><input type="text" id="ilceAd" placeholder="ör. Çanakkale / Merkez İlçe Millî Eğitim Müdürlüğüne"></td></tr>
+      <tr><td class="label">Öğrencinin Adı Soyadı</td><td><input type="text" id="ogrenciAd"></td></tr>
+      <tr><td class="label">Sınıf / Şube</td><td><input type="text" id="sinifSube"></td></tr>
+      <tr><td class="label">Okul Kurulu Karar Tarihi / No</td><td><input type="text" id="kararNo"></td></tr>
+      <tr><td class="label">Gönderme Tarihi</td><td><input type="date" id="gondermeTarihi"></td></tr>
+    </table>
+    <div class="para">İlgi: Okulumuz Öğrenci Davranışlarını Değerlendirme Kurulunun yukarıda tarih ve sayısı belirtilen kararı ile okul değiştirme yaptırımı uygulanmasına karar verilen öğrenciye ait dosya, Md.61 uyarınca onay için ekte gönderilmiştir.</div>
+
+    <div class="section-title">Dosya Ekinde Gönderilen Belgeler</div>
+    <div class="section-sub">Md.61/2</div>
+
+    <div class="check-group">
+      <div class="check-row"><input type="checkbox" id="belge_ifade"><label for="belge_ifade">Yazılı ifadeler / savunma (EK-7)</label></div>
+      <div class="check-row"><input type="checkbox" id="belge_mahkeme"><label for="belge_mahkeme">Varsa mahkeme kararı ve soruşturmayla ilgili diğer belgeler</label></div>
+      <div class="check-row"><input type="checkbox" id="belge_kararOrnegi"><label for="belge_kararOrnegi">Öğrenci Davranışlarını Değerlendirme Kurulu Karar Örneği onaylı sureti (EK-8)</label></div>
+      <div class="check-row"><input type="checkbox" id="belge_itiraz"><label for="belge_itiraz">İtiraz edilmişse itiraza ilişkin belgeler (EK-11)</label></div>
+      <div class="check-row"><input type="checkbox" id="belge_tebellug"><label for="belge_tebellug">Kararların bildirildiğine ilişkin tebellüğ belgesi (EK-9)</label></div>
+      <div class="check-row"><input type="checkbox" id="belge_rapor"><label for="belge_rapor">Öğretmen Raporu / Kurula Sevk Formu (EK-5)</label></div>
+      <div class="check-row inline-extra"><input type="checkbox" id="belge_diger"><label for="belge_diger">Diğer:</label><input type="text" id="digerBelge" placeholder="belirtiniz"></div>
+    </div>
+
+    <div class="note-box">
+      <div class="note-title">Hatırlatma</div>
+      <div class="note-text">İlçe kurulu, dosyanın kendisine bildirilmesinden itibaren en geç 5 iş günü içinde toplanır; karar verme süresi en geç 15 gündür (Md.64/3). İlçe kurulu ayrıca öğrencinin naklen gidebileceği okulu da belirler (Md.64/2-b).</div>
+    </div>
+
+    <table class="imza">
+      <tr>
+        <td>
+          <div class="imza-box"></div>
+          <input class="imza-name" type="text" placeholder="Ad Soyad">
+          <div class="imza-label">Okul Müdürü</div>
+        </td>
+      </tr>
+    </table>
+
+
+    <div class="foot">
+      <span>Öğrenci Davranışları Yaptırım Süreci &ndash; Ek Belge</span>
+      <span>EK-10</span>
+    </div>
+  </div>
+
+<script src="../assets/app.js"></script>
+</body>
+</html>

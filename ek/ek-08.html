@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EK-8 ÖĞRENCİ DAVRANIŞLARINI DEĞERLENDİRME KURULU KARAR TUTANAĞI</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+  <div class="toolbar">
+    <a class="back" href="../index.html">&larr; Ana Sayfa</a>
+    <span class="hint">Alanları doldurun, ardından &quot;Yazdır / PDF Al&quot; ile A4 boyutunda PDF olarak kaydedin.</span>
+    <div class="btns">
+      <button class="secondary" type="button" onclick="clearForm()">Formu Temizle</button>
+      <button type="button" onclick="window.print()">🖨️ Yazdır / PDF Al</button>
+    </div>
+  </div>
+
+  <div class="page">
+    <div class="school-line" id="okulAdi" contenteditable="true" spellcheck="false"></div>
+    <div class="school-hint">↑ Farklı okul için bu satırı tıklayıp değiştirebilirsiniz</div>
+    <div class="school-sub">Öğrenci Davranışlarını Değerlendirme Süreci</div>
+
+    <div class="ek-tag">EK-8</div>
+    <h1>ÖĞRENCİ DAVRANIŞLARINI DEĞERLENDİRME KURULU KARAR TUTANAĞI</h1>
+    <div class="dayanak">Dayanak: Md.60/3 (Yönetmelik EK-10 karşılığı)</div>
+
+    <table class="meta">
+      <tr><td class="label">Karar No / Tarih</td><td><input type="date" id="kararTarihi"></td></tr>
+      <tr><td class="label">Öğrencinin Adı Soyadı</td><td><input type="text" id="ogrenciAd"></td></tr>
+      <tr><td class="label">Sınıf / Şube</td><td><input type="text" id="sinifSube"></td></tr>
+      <tr><td class="label">Bu, öğrencinin bu davranışa ilişkin kaçıncı yaptırımı?</td><td><input type="text" id="kacinciYaptirim" placeholder="ör. 1."></td></tr>
+    </table>
+    <div class="section-title">İncelenen Davranış ve Dayanılan Yönetmelik Maddesi</div>
+
+    <table class="meta"><tr><td class="label" style="width:18%">Md.55 /</td><td><input type="text" id="maddeBendi" placeholder="a / b / c ..."></td></tr></table>
+
+    <textarea id="davranisAciklama" rows="2" placeholder="Davranışı kısaca açıklayınız..."></textarea>
+
+    <div class="section-title">Yaptırım Takdirinde Değerlendirilen Hususlar</div>
+    <div class="section-sub">Md.56/1</div>
+
+    <div class="check-group">
+      <div class="check-row"><input type="checkbox" id="husus_nitelik"><label for="husus_nitelik">Davranışın niteliği ve gerçekleştiği şartlar</label></div>
+      <div class="check-row"><input type="checkbox" id="husus_genel"><label for="husus_genel">Öğrencinin genel durumu</label></div>
+      <div class="check-row"><input type="checkbox" id="husus_yascins"><label for="husus_yascins">Yaş / cinsiyet</label></div>
+      <div class="check-row"><input type="checkbox" id="husus_ders"><label for="husus_ders">Derslerdeki ilgi ve başarı</label></div>
+      <div class="check-row"><input type="checkbox" id="husus_sosyal"><label for="husus_sosyal">Sosyal / kültürel katılım</label></div>
+      <div class="check-row"><input type="checkbox" id="husus_gecmis"><label for="husus_gecmis">Bu yıl içindeki önceki yaptırım geçmişi</label></div>
+    </div>
+
+    <div class="section-title">Kurul Kararı</div>
+
+    <div class="check-group">
+      <div class="radio-row"><input type="radio" name="kararTuru" id="kararTuru_0" value="uyarma"><label for="kararTuru_0">Uyarma</label></div>
+      <div class="radio-row"><input type="radio" name="kararTuru" id="kararTuru_1" value="kinama"><label for="kararTuru_1">Kınama</label></div>
+      <div class="radio-row"><input type="radio" name="kararTuru" id="kararTuru_2" value="okulDegistirme"><label for="kararTuru_2">Okul Değiştirme</label></div>
+      <div class="radio-row"><input type="radio" name="kararTuru" id="kararTuru_3" value="yok"><label for="kararTuru_3">Yaptırım gerekmiyor</label></div>
+    </div>
+
+    <div class="section-title">Kararın Gerekçesi (özet)</div>
+
+    <textarea id="gerekce" rows="2"></textarea>
+
+    <table class="meta">
+      <tr><td class="label">Oylama Sonucu</td><td><input type="text" id="oylamaSonucu" placeholder="ör. 4 kabul, 1 çekimser"></td></tr>
+    </table>
+    <div class="section-title">Katılan Üyeler, Görüş ve İmzalar</div>
+
+    <table class="meta">
+      <tr><td class="label" style="width:26%">Kurul Başkanı</td><td><input type="text" id="uyeGorus0" placeholder="görüş"></td><td><input type="text" id="uyeImza0" placeholder="ad soyad / imza"></td></tr>
+      <tr><td class="label" style="width:26%">Öğretmen Üye 1</td><td><input type="text" id="uyeGorus1" placeholder="görüş"></td><td><input type="text" id="uyeImza1" placeholder="ad soyad / imza"></td></tr>
+      <tr><td class="label" style="width:26%">Öğretmen Üye 2</td><td><input type="text" id="uyeGorus2" placeholder="görüş"></td><td><input type="text" id="uyeImza2" placeholder="ad soyad / imza"></td></tr>
+      <tr><td class="label" style="width:26%">Öğretmen Üye 3</td><td><input type="text" id="uyeGorus3" placeholder="görüş"></td><td><input type="text" id="uyeImza3" placeholder="ad soyad / imza"></td></tr>
+      <tr><td class="label" style="width:26%">Veli Üyesi</td><td><input type="text" id="uyeGorus4" placeholder="görüş"></td><td><input type="text" id="uyeImza4" placeholder="ad soyad / imza"></td></tr>
+    </table>
+
+    <div class="section-title">Karara Katılmayan Üye(ler) Varsa Gerekçesi</div>
+    <div class="section-sub">Md.60/3</div>
+
+    <textarea id="katilmayanGerekce" rows="2"></textarea>
+
+    <div class="section-title">Okul Müdürünün Onayı</div>
+
+    <div class="check-group">
+      <div class="radio-row"><input type="radio" name="mudurOnay" id="mudurOnay_0" value="uygun"><label for="mudurOnay_0">Uygun bulundu, onaylandı</label></div>
+      <div class="radio-row"><input type="radio" name="mudurOnay" id="mudurOnay_1" value="uygunDegil"><label for="mudurOnay_1">Uygun bulunmadı, itirazla birlikte kurula iade edildi (Md.60/4)</label></div>
+    </div>
+
+    <table class="imza">
+      <tr>
+        <td>
+          <div class="imza-box"></div>
+          <input class="imza-name" type="text" placeholder="Ad Soyad">
+          <div class="imza-label">Kurul Başkanı</div>
+        </td>
+        <td>
+          <div class="imza-box"></div>
+          <input class="imza-name" type="text" placeholder="Ad Soyad">
+          <div class="imza-label">Okul Müdürü</div>
+        </td>
+      </tr>
+    </table>
+
+
+    <div class="foot">
+      <span>Öğrenci Davranışları Yaptırım Süreci &ndash; Ek Belge</span>
+      <span>EK-8</span>
+    </div>
+  </div>
+
+<script src="../assets/app.js"></script>
+</body>
+</html>

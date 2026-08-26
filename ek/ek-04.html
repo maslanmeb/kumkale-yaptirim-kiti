@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EK-4 VELİ GÖRÜŞME TUTANAĞI</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+  <div class="toolbar">
+    <a class="back" href="../index.html">&larr; Ana Sayfa</a>
+    <span class="hint">Alanları doldurun, ardından &quot;Yazdır / PDF Al&quot; ile A4 boyutunda PDF olarak kaydedin.</span>
+    <div class="btns">
+      <button class="secondary" type="button" onclick="clearForm()">Formu Temizle</button>
+      <button type="button" onclick="window.print()">🖨️ Yazdır / PDF Al</button>
+    </div>
+  </div>
+
+  <div class="page">
+    <div class="school-line" id="okulAdi" contenteditable="true" spellcheck="false"></div>
+    <div class="school-hint">↑ Farklı okul için bu satırı tıklayıp değiştirebilirsiniz</div>
+    <div class="school-sub">Öğrenci Davranışlarını Değerlendirme Süreci</div>
+
+    <div class="ek-tag">EK-4</div>
+    <h1>VELİ GÖRÜŞME TUTANAĞI</h1>
+    <div class="dayanak">Dayanak: Md.54/3-c — Uyarma sürecinin 3. aşaması</div>
+
+    <table class="meta">
+      <tr><td class="label">Öğrencinin Adı Soyadı</td><td><input type="text" id="ogrenciAd"></td></tr>
+      <tr><td class="label">Sınıf / Şube</td><td><input type="text" id="sinifSube"></td></tr>
+      <tr><td class="label">Görüşme Tarihi</td><td><input type="date" id="gorusmeTarihi"></td></tr>
+      <tr><td class="label">Veliye Davet Şekli ve Tarihi</td><td><input type="text" id="davetSekli" placeholder="ör. telefonla, 12.09.2026"></td></tr>
+      <tr><td class="label">Görüşmeye Katılan Okul Yöneticisi</td><td><input type="text" id="yoneticiAd"></td></tr>
+      <tr><td class="label">Görüşmeye Katılan Öğretmen(ler)</td><td><input type="text" id="ogretmenAd"></td></tr>
+    </table>
+    <div class="note-box">
+      <div class="note-title">Rehberlik öğretmeni katılımı</div>
+      <div class="note-text">Md.54/3-c uyarınca rehberlik öğretmeni &ldquo;varsa&rdquo; görüşmeye katılır. Okulumuzda kadro bulunmadığından bu alan boş bırakılır; görüşme okul yöneticisi ve öğretmen ile yürütülür.</div>
+    </div>
+
+    <div class="section-title">Öğrencinin Sürdürdüğü Olumsuz Davranış ve Daha Önce Uygulanan Aşamalar</div>
+
+    <textarea id="davranisGecmis" rows="3"></textarea>
+
+    <div class="section-title">Veliye Bildirilen Hususlar</div>
+
+    <div class="para">Öğrencinin olumsuz davranışları ve davranış sürerse uygulanabilecek yaptırımlar (kınama, okul değiştirme dâhil) veliye sözlü olarak bildirilmiştir.</div>
+
+    <div class="section-title">Velinin Görüş ve Beyanı</div>
+
+    <textarea id="veliGorus" rows="3"></textarea>
+
+    <div class="section-title">Veli Toplantıya Geldi mi?</div>
+
+    <div class="check-group">
+      <div class="radio-row"><input type="radio" name="veliGeldi" id="veliGeldi_0" value="geldi"><label for="veliGeldi_0">Geldi</label></div>
+      <div class="radio-row"><input type="radio" name="veliGeldi" id="veliGeldi_1" value="gelmedi"><label for="veliGeldi_1">Gelmedi (bu tutanak tek başına düzenlenmiştir)</label></div>
+    </div>
+
+    <table class="imza">
+      <tr>
+        <td>
+          <div class="imza-box"></div>
+          <input class="imza-name" type="text" placeholder="Ad Soyad">
+          <div class="imza-label">Okul Yöneticisi</div>
+        </td>
+        <td>
+          <div class="imza-box"></div>
+          <input class="imza-name" type="text" placeholder="Ad Soyad">
+          <div class="imza-label">Öğretmen</div>
+        </td>
+        <td>
+          <div class="imza-box"></div>
+          <input class="imza-name" type="text" placeholder="Ad Soyad">
+          <div class="imza-label">Öğrenci Velisi</div>
+        </td>
+      </tr>
+    </table>
+
+
+    <div class="foot">
+      <span>Öğrenci Davranışları Yaptırım Süreci &ndash; Ek Belge</span>
+      <span>EK-4</span>
+    </div>
+  </div>
+
+<script src="../assets/app.js"></script>
+</body>
+</html>

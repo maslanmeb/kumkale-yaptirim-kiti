@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EK-5 ÖĞRETMEN RAPORU VE KURULA SEVK FORMU</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+  <div class="toolbar">
+    <a class="back" href="../index.html">&larr; Ana Sayfa</a>
+    <span class="hint">Alanları doldurun, ardından &quot;Yazdır / PDF Al&quot; ile A4 boyutunda PDF olarak kaydedin.</span>
+    <div class="btns">
+      <button class="secondary" type="button" onclick="clearForm()">Formu Temizle</button>
+      <button type="button" onclick="window.print()">🖨️ Yazdır / PDF Al</button>
+    </div>
+  </div>
+
+  <div class="page">
+    <div class="school-line" id="okulAdi" contenteditable="true" spellcheck="false"></div>
+    <div class="school-hint">↑ Farklı okul için bu satırı tıklayıp değiştirebilirsiniz</div>
+    <div class="school-sub">Öğrenci Davranışlarını Değerlendirme Süreci</div>
+
+    <div class="ek-tag">EK-5</div>
+    <h1>ÖĞRETMEN RAPORU VE KURULA SEVK FORMU</h1>
+    <div class="dayanak">Dayanak: Md.54/3-c (son cümle) ve Md.58/f</div>
+
+    <table class="meta">
+      <tr><td class="label">Öğrencinin Adı Soyadı</td><td><input type="text" id="ogrenciAd"></td></tr>
+      <tr><td class="label">Sınıf / Şube</td><td><input type="text" id="sinifSube"></td></tr>
+      <tr><td class="label">Raporu Hazırlayan Öğretmen</td><td><input type="text" id="ogretmenAd"></td></tr>
+      <tr><td class="label">Tarih</td><td><input type="date" id="tarih"></td></tr>
+    </table>
+    <div class="section-title">Sevk Gerekçesi</div>
+
+    <div class="check-group">
+      <div class="radio-row"><input type="radio" name="sevkGerekce" id="sevkGerekce_0" value="a"><label for="sevkGerekce_0">Md.55/a — 3 aşamalı uyarma süreci tükendi, davranış sürüyor</label></div>
+      <div class="radio-row"><input type="radio" name="sevkGerekce" id="sevkGerekce_1" value="b"><label for="sevkGerekce_1">Md.55/b — Doğrudan kınama gerektiren davranış</label></div>
+      <div class="radio-row"><input type="radio" name="sevkGerekce" id="sevkGerekce_2" value="c"><label for="sevkGerekce_2">Md.55/c — Doğrudan okul değiştirme gerektiren davranış</label></div>
+    </div>
+
+    <div class="section-title">Olayın / Davranışın Ayrıntılı Anlatımı</div>
+    <div class="section-sub">Tarih, yer, tanıklar dâhil</div>
+
+    <textarea id="olayAnlatim" rows="5"></textarea>
+
+    <div class="section-title">Ekte Kurula Sunulan Belgeler</div>
+
+    <div class="check-group">
+      <div class="check-row"><input type="checkbox" id="belge_ek2"><label for="belge_ek2">EK-2 Sözlü Uyarma Notu (varsa)</label></div>
+      <div class="check-row"><input type="checkbox" id="belge_ek3"><label for="belge_ek3">EK-3 Öğrenci Sözleşmesi (varsa)</label></div>
+      <div class="check-row"><input type="checkbox" id="belge_ek4"><label for="belge_ek4">EK-4 Veli Görüşme Tutanağı (varsa)</label></div>
+      <div class="check-row inline-extra"><input type="checkbox" id="belge_diger"><label for="belge_diger">Diğer kanıtlar / tanık beyanları / fotoğraf-belge:</label><input type="text" id="digerBelge" placeholder="belirtiniz"></div>
+    </div>
+
+    <div class="section-title">Öğrencinin Bu Eğitim-Öğretim Yılındaki Önceki Yaptırım Geçmişi</div>
+
+    <div class="check-group">
+      <div class="radio-row"><input type="radio" name="gecmis" id="gecmis_0" value="yok"><label for="gecmis_0">Yok (ilk olay)</label></div>
+      <div class="radio-row"><input type="radio" name="gecmis" id="gecmis_1" value="var"><label for="gecmis_1">Var — aşağıda açıklayınız</label></div>
+    </div>
+
+    <textarea id="gecmisAciklama" rows="2" placeholder="Varsa açıklayınız..."></textarea>
+
+    <table class="imza">
+      <tr>
+        <td>
+          <div class="imza-box"></div>
+          <input class="imza-name" type="text" placeholder="Ad Soyad">
+          <div class="imza-label">Raporu Hazırlayan Öğretmen</div>
+        </td>
+        <td>
+          <div class="imza-box"></div>
+          <input class="imza-name" type="text" placeholder="Ad Soyad">
+          <div class="imza-label">Okul Müdürü (Kurula havale)</div>
+        </td>
+      </tr>
+    </table>
+
+
+    <div class="foot">
+      <span>Öğrenci Davranışları Yaptırım Süreci &ndash; Ek Belge</span>
+      <span>EK-5</span>
+    </div>
+  </div>
+
+<script src="../assets/app.js"></script>
+</body>
+</html>

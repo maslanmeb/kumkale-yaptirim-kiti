@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Uygulama Kılavuzu — Yaptırım Süreçleri Kiti</title>
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  body{ background:#f3f4f6; font-family: Arial, Helvetica, sans-serif; padding: 0 0 60px; }
+  .topbar{
+    background: #1F3864; color:#fff; padding: 16px 0;
+  }
+  .topbar .wrap{ max-width: 880px; margin:0 auto; padding: 0 18px; display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap;}
+  .topbar a.back{ color:#fff; text-decoration:none; font-weight:700; font-size: 13.5px; }
+  .topbar a.back:hover{ text-decoration:underline; }
+  .topbar button{
+    font-family: Arial, sans-serif; font-size: 13px; font-weight:700; padding: 8px 14px;
+    border-radius:6px; border:1px solid rgba(255,255,255,0.6); background:transparent; color:#fff; cursor:pointer;
+  }
+  .article{
+    max-width: 820px; margin: 0 auto; padding: 0 18px;
+  }
+  .cover{ background:#fff; border-radius:10px; box-shadow:0 2px 14px rgba(0,0,0,0.08); padding: 30px 34px; margin: 26px 0 22px;}
+  .cover .school-line{ font-size:13pt; }
+  .cover h1{ font-family: Georgia, serif; color:#1F3864; font-size: 25px; text-align:left; margin: 14px 0 6px; }
+  .cover .sub{ color:#666; font-size:14px; font-style:italic; margin-bottom: 14px;}
+  .cover .meta{ font-size: 12.5px; color:#888; line-height:1.7; }
+  .cover .warn{ margin-top:14px; background:#fdeee9; border-left:4px solid #c0392b; padding:10px 14px; font-size:12.5px; color:#7a2617; border-radius: 4px;}
+
+  .toc{ background:#fff; border-radius:10px; box-shadow:0 2px 14px rgba(0,0,0,0.08); padding: 20px 26px; margin-bottom: 22px; }
+  .toc h2{ font-family: Georgia, serif; color:#1F3864; font-size:16px; margin:0 0 10px;}
+  .toc ol{ margin:0; padding-left:20px; font-size:13.5px; line-height:2; }
+  .toc a{ color:#274b7a; text-decoration:none; }
+  .toc a:hover{ text-decoration:underline; }
+
+  section.card{ background:#fff; border-radius:10px; box-shadow:0 2px 14px rgba(0,0,0,0.08); padding: 26px 30px; margin-bottom: 20px; scroll-margin-top: 16px;}
+  section.card h2{ font-family: Georgia, serif; color:#1F3864; font-size:19px; margin: 0 0 14px; border-bottom:2px solid #eef1f6; padding-bottom:10px;}
+  section.card h3{ font-size:14.5px; color:#333; margin: 18px 0 8px; }
+  section.card p{ font-size: 13.8px; line-height:1.75; color:#2b2b2b; margin: 0 0 12px; }
+  section.card ul, section.card ol.plain{ font-size:13.5px; line-height:1.85; color:#2b2b2b; margin: 0 0 14px; padding-left: 22px;}
+  section.card table{ width:100%; border-collapse:collapse; margin: 8px 0 18px; font-size:13px; }
+  section.card table th{ background:#1F3864; color:#fff; text-align:left; padding:8px 10px; font-size:12.5px;}
+  section.card table td{ border:1px solid #dfe3e8; padding:8px 10px; vertical-align:top; }
+  section.card table tr:nth-child(even) td{ background:#f8f9fb; }
+
+  .ek-link{
+    display:inline-block; background:#eef2f8; color:#1F3864; text-decoration:none; font-weight:700;
+    font-size:12.5px; padding: 2px 8px; border-radius:5px; border:1px solid #c7d3e3;
+  }
+  .ek-link:hover{ background:#dde6f3; }
+
+  .flow-steps{ counter-reset: step; list-style:none; padding-left:0; margin:0 0 16px;}
+  .flow-steps li{
+    counter-increment: step; position:relative; padding: 6px 0 6px 34px; font-size:13.5px; line-height:1.7; color:#2b2b2b;
+  }
+  .flow-steps li::before{
+    content: counter(step); position:absolute; left:0; top:6px; width:22px; height:22px; border-radius:50%;
+    background:#1F3864; color:#fff; font-size:11.5px; font-weight:700; display:flex; align-items:center; justify-content:center;
+  }
+
+  .quickref{ width:100%; border-collapse:collapse; font-size:13px; }
+  .quickref th{ background:#1F3864; color:#fff; padding:8px 10px; text-align:left;}
+  .quickref td{ border:1px solid #dfe3e8; padding:8px 10px;}
+  .quickref tr:nth-child(even) td{ background:#f8f9fb; }
+
+  footer.site{ text-align:center; font-size:12px; color:#9aa0a6; margin-top: 30px; padding: 0 16px; line-height:1.6;}
+</style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="wrap">
+      <a class="back" href="index.html">&larr; Ana Sayfa</a>
+      <button type="button" onclick="window.print()">🖨️ Yazdır / PDF Al</button>
+    </div>
+  </div>
+
+  <div class="article">
+
+    <div class="cover">
+      <div class="school-line" id="okulAdi" contenteditable="true" spellcheck="false"></div>
+      <div class="school-hint">↑ Farklı okul için bu satırı tıklayıp değiştirebilirsiniz</div>
+      <h1>Ortaokul Yaptırım Süreçleri Uygulama Kılavuzu</h1>
+      <div class="sub">Uyarma – Kınama – Okul Değiştirme Süreçleri için Adım Adım Uygulama Rehberi</div>
+      <div class="meta">
+        Dayanak: Millî Eğitim Bakanlığı Okul Öncesi Eğitim ve İlköğretim Kurumları Yönetmeliği<br>
+        (26/7/2014 tarihli ve 29072 sayılı R.G. — son değişiklik 28/7/2026 tarihli ve 33323 sayılı R.G.)<br>
+        İlgili maddeler: 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65
+      </div>
+      <div class="warn">Bu kılavuz yalnızca <strong>ortaokul/imam-hatip ortaokulu</strong> kademesi içindir. Rehberlik ve psikolojik danışman normu bulunmayan okul yapısına göre uyarlanmıştır.</div>
+    </div>
+
+    <div class="toc">
+      <h2>İçindekiler</h2>
+      <ol>
+        <li><a href="#s1">Amaç, Kapsam ve Yasal Dayanak</a></li>
+        <li><a href="#s2">Tanımlar ve Rol Ayrımı</a></li>
+        <li><a href="#s3">Kurulun Oluşturulması</a></li>
+        <li><a href="#s4">İlk Kez Karşılaşılan Davranışlar İçin Uyarma Süreci</a></li>
+        <li><a href="#s5">Hangi Davranış Hangi Yaptırımı Gerektirir?</a></li>
+        <li><a href="#s6">Süreç Akışı — Karar Ağacı</a></li>
+        <li><a href="#s7">Tekrar Eden Davranışlar İçin Kurallar</a></li>
+        <li><a href="#s8">Diğer Süreçlerle Etkileşim</a></li>
+        <li><a href="#s9">Süre Çizelgesi</a></li>
+        <li><a href="#s10">Hızlı Başvuru — Tek Sayfa Kontrol Listesi</a></li>
+      </ol>
+    </div>
+
+    <section class="card" id="s1">
+      <h2>1. Amaç, Kapsam ve Yasal Dayanak</h2>
+      <h3>1.1 Amaç</h3>
+      <p>Bu kılavuz, okulumuzda ortaokul/imam-hatip ortaokulu öğrencilerinin olumsuz davranışlarıyla karşılaşıldığında uygulanacak uyarma, kınama ve okul değiştirme süreçlerinin; ilk kez ya da tekrar eden davranışlar için tutarlı, belgeli ve süresi içinde yürütülmesini sağlamak amacıyla hazırlanmıştır.</p>
+      <h3>1.2 Kapsam</h3>
+      <p>Kılavuz yalnızca ortaokul ve imam-hatip ortaokulu kademesini kapsar. İlkokul kademesinde Yönetmelikte ayrı bir yaptırım sistemi bulunmamaktadır; ilkokulda davranışlar Md.29 uyarınca yalnızca gözlem yoluyla &ldquo;Geliştirilmeli / İyi / Çok iyi&rdquo; şeklinde derecelendirilir, uyarma-kınama-okul değiştirme süreci uygulanmaz.</p>
+      <h3>1.3 Yasal Dayanak</h3>
+      <p>Millî Eğitim Bakanlığı Okul Öncesi Eğitim ve İlköğretim Kurumları Yönetmeliği, Sekizinci Bölüm (Öğrenci Davranışlarının Değerlendirilmesi), Madde 51-65; ayrıca Md.9 (rehberlik hizmetleri) ve Md.78/9-10 (önleyici tedbirler, arama).</p>
+      <table>
+        <tr><th>Konu</th><th>Madde</th></tr>
+        <tr><td>Öğrenci davranışlarını değerlendirme kurulu</td><td>Madde 57, 58, 59</td></tr>
+        <tr><td>Uyarma süreci (3 aşamalı)</td><td>Madde 54/3</td></tr>
+        <tr><td>Yaptırım gerektiren davranışlar listesi</td><td>Madde 55</td></tr>
+        <tr><td>Yaptırım takdirinde dikkat edilecek hususlar</td><td>Madde 56</td></tr>
+        <tr><td>İfade alma / kanıt toplama / karar yazımı</td><td>Madde 60</td></tr>
+        <tr><td>İlçe kuruluna gönderme</td><td>Madde 61</td></tr>
+        <tr><td>Kararın uygulanması, e-Okul&rsquo;a işlenmesi, kaldırılması</td><td>Madde 62</td></tr>
+        <tr><td>Zararın ödetilmesi</td><td>Madde 65</td></tr>
+      </table>
+    </section>
+
+    <section class="card" id="s2">
+      <h2>2. Tanımlar ve Rol Ayrımı</h2>
+      <h3>2.1 Üç Yaptırım Türü</h3>
+      <table>
+        <tr><th>Tür</th><th>Açıklama</th></tr>
+        <tr><td><strong>Uyarma</strong></td><td>Öğrenciye yaptırım gerektiren davranışta bulunduğunun sözlü/süreçli olarak bildirilmesi; 3 aşamalı bir süreçtir (Md.54/3).</td></tr>
+        <tr><td><strong>Kınama</strong></td><td>Öğrenciye, yaptırım gerektiren davranışta bulunduğunun ve tekrarından kaçınması gerektiğinin okul yönetimince <strong>YAZILI</strong> olarak bildirilmesidir (Md.54/4).</td></tr>
+        <tr><td><strong>Okul Değiştirme</strong></td><td>Öğrencinin başka bir okulda öğrenimini sürdürmek üzere naklen gönderilmesidir (Md.54/5). İlçe kurulunun onayı gerekir.</td></tr>
+      </table>
+
+      <h3>2.2 &ldquo;Rehberlik Öğretmeni&rdquo; ile &ldquo;Şube Rehber Öğretmeni&rdquo; Karıştırılmamalıdır</h3>
+      <div class="note-box">
+        <div class="note-title">Okulumuzda rehber öğretmen (psikolojik danışman) normu bulunmuyor</div>
+        <div class="note-text">Yönetmelikte iki farklı görev geçer: <strong>(1) &ldquo;Rehberlik öğretmeni / rehberlik servisi&rdquo;</strong> = okul psikolojik danışmanı; okulumuzda kadrosu yok. Yönetmelik bu görevlinin katılımını çoğu yerde &ldquo;varsa&rdquo; şartına bağlamıştır (Md.54/3-c) veya bulunmaması hâlini ayrıca düzenlemiştir (Md.60/1: &ldquo;rehberlik öğretmeninin bulunmaması durumunda bir öğretmen eşliğinde&rdquo;). <strong>(2) &ldquo;Şube rehber öğretmeni&rdquo;</strong> = Md.48 uyarınca her şubede görevlendirilen normal bir öğretmendir; okulumuzda bu görev mevcut sınıf/branş öğretmenlerinden biri tarafından yürütülmeye devam eder ve rehber öğretmen eksikliğinden etkilenmez.</div>
+      </div>
+      <p>Bu kılavuzdaki tüm belgelerde &ldquo;rehberlik öğretmeni&rdquo; alanı, normumuz bulunmadığından, müdürün göstereceği bir öğretmen ile doldurulacak şekilde düzenlenmiştir.</p>
+
+      <h3>2.3 Rehberlik Servisi Yükümlülüğü Ortadan Kalkmaz</h3>
+      <p>Md.9 uyarınca okulda rehberlik hizmetlerini yürütmek üzere bir rehberlik servisi oluşturulması zorunludur; kadrolu danışman bulunmaması bu servisin varlığını değil, kimin hizmet vereceğini etkiler. İhtiyaç hâlinde il/ilçe Rehberlik ve Araştırma Merkezi (RAM) ile hizmet alımı/yönlendirme yoluyla iş birliği yapılması, ayrıca Md.58/c gereği uyum güçlüğü çeken öğrenciler için RAM ile koordinasyon kurulması önerilir.</p>
+    </section>
+
+    <section class="card" id="s3">
+      <h2>3. Öğrenci Davranışlarını Değerlendirme Kurulunun Oluşturulması <span style="font-weight:400; font-size:13px; color:#888;">(Md.57)</span></h2>
+      <p>Kurulunuz henüz oluşturulmadığı için bu bölüm adım adım kuruluş sürecini açıklar. İlgili belge: <a class="ek-link" href="ek/ek-01.html">EK-1</a></p>
+      <h3>3.1 Kurulun Üyeleri</h3>
+      <table>
+        <tr><th>Görev</th><th>Nasıl Belirlenir</th></tr>
+        <tr><td>Başkan</td><td>Müdürün görevlendireceği bir müdür yardımcısı (Md.57/2-a)</td></tr>
+        <tr><td>3 Öğretmen Üye</td><td>Her ders yılının İLK öğretmenler kurulu toplantısında, öğretmenler kurulunca GİZLİ OYLA seçilir (Md.57/2-b). Yeterli öğretmen yoksa ücretli okutanlar da aday olabilir (Md.57/3).</td></tr>
+        <tr><td>1 Veli Üyesi</td><td>Okul-Aile Birliği kendi üyeleri arasından seçer (Md.57/2-c).</td></tr>
+        <tr><td>3 Yedek Üye</td><td>Öğretmen seçiminde en çok oy alan sıradaki adaylardan belirlenir (Md.57/5).</td></tr>
+      </table>
+      <h3>3.2 Kuruluş Adımları</h3>
+      <ol class="flow-steps">
+        <li>Eylül ayında yapılacak ilk öğretmenler kurulu gündemine &ldquo;Öğrenci Davranışlarını Değerlendirme Kurulu üye seçimi&rdquo; maddesi eklenir.</li>
+        <li>Gizli oylama yapılır; en çok oyu alan 3 öğretmen asıl, sonraki 3 kişi yedek üye olur. Oy eşitliğinde seçim yenilenir; yine eşitse kıdemli öğretmen seçilmiş sayılır, kıdem de eşitse kura çekilir (Md.57/4).</li>
+        <li>Müdür, başkanlık edecek müdür yardımcısını görevlendirir.</li>
+        <li>Okul-Aile Birliği, kendi üyeleri arasından bir veli üyeyi bildirir.</li>
+        <li>Tüm sonuçlar <a class="ek-link" href="ek/ek-01.html">EK-1</a> &ldquo;Kurul Oluşturma Tutanağı&rdquo;na işlenir, öğretmenler kurulu tutanağına eklenir ve okul müdürünce onaylanır.</li>
+        <li>Kurulun görevi, yeni kurul oluşana kadar devam eder; üyeler kabul edilebilir bir özrü olmadıkça görevden ayrılamaz (Md.57/6).</li>
+      </ol>
+      <h3>3.3 Diğer Kurallar</h3>
+      <ul>
+        <li>İkili eğitim yapılan okullarda istenirse ayrı ayrı kurul oluşturulabilir (Md.57/7).</li>
+        <li>Rehberlik öğretmeni (varsa) toplantılara ihtiyaç hâlinde katılabilir ancak oy kullanamaz (Md.57/8) — okulumuzda bu madde uygulanmaz, çünkü kadro yok.</li>
+        <li>Şikâyetçi/zarar gören/olumsuz davranışta bulunanla ikinci dereceye kadar akrabalığı olan üyeler o toplantıya katılamaz (Md.59/2).</li>
+      </ul>
+    </section>
+
+    <section class="card" id="s4">
+      <h2>4. İlk Kez Karşılaşılan Davranışlar İçin Uyarma Süreci <span style="font-weight:400; font-size:13px; color:#888;">(Md.54/3)</span></h2>
+      <p>Md.55/a&rsquo;da sayılan &ldquo;uyarma yaptırımını gerektiren davranışlar&rdquo; ilk kez gözlendiğinde doğrudan kurula sevk edilmez; önce aşağıdaki 3 aşamalı süreç uygulanır. Amaç, davranışı bilinçlendirme yoluyla düzeltmektir.</p>
+      <table>
+        <tr><th>Aşama</th><th>Ne Yapılır</th><th>Belge</th></tr>
+        <tr><td>1</td><td>Öğretmen, davranış gözlendiği an öğrenciyle birebir görüşme yapar; beklenen olumlu davranış anlatılır, devamı hâlinde uygulanabilecek yaptırımlar hakkında sözlü bilgi verilir (Md.54/3-a).</td><td><a class="ek-link" href="ek/ek-02.html">EK-2</a></td></tr>
+        <tr><td>2</td><td>Davranış sözlü uyarıya rağmen sürerse; öğretmen ve öğrenci arasında görüşme yapılır, öğrenci davranışını değiştirmeyi kabul ettiğine ilişkin sözleşmeyi imzalar (Md.54/3-b).</td><td><a class="ek-link" href="ek/ek-03.html">EK-3</a></td></tr>
+        <tr><td>3</td><td>Davranış sözleşmeye rağmen sürerse; öğretmen veliyi okula davet eder, bir okul yöneticisi (rehberlik öğretmeni varsa o da) katılımıyla görüşme yapılır.</td><td><a class="ek-link" href="ek/ek-04.html">EK-4</a></td></tr>
+      </table>
+      <p>Bu üç aşamaya rağmen davranış sürerse, öğretmen yazılı belgelerin bulunduğu dosyayı bir raporla birlikte hazırlayarak Öğrenci Davranışlarını Değerlendirme Kuruluna sevk eder (Md.54/3-c, son cümle). Kullanılacak belge: <a class="ek-link" href="ek/ek-05.html">EK-5</a>.</p>
+      <div class="note-box">
+        <div class="note-title">Dikkat</div>
+        <div class="note-text">Bu 3 aşamalı süreç yalnızca Md.55/a&rsquo;daki &ldquo;uyarma&rdquo; düzeyi davranışlar içindir. Md.55/b (kınama) veya Md.55/c (okul değiştirme) listesindeki bir davranışla karşılaşırsanız bu aşamaları BEKLEMEYİN — doğrudan kurula sevk edin.</div>
+      </div>
+    </section>
+
+    <section class="card" id="s5">
+      <h2>5. Hangi Davranış Hangi Yaptırımı Gerektirir? <span style="font-weight:400; font-size:13px; color:#888;">(Md.55)</span></h2>
+      <p>Aşağıdaki üç liste Yönetmelik Md.55&rsquo;in birebir özetidir. Öğrencinin davranışını bu listelerden birinde bulun; hangi sütunda ise uygulanacak süreç ona göre belirlenir.</p>
+
+      <h3>5.1 Uyarma Gerektiren Davranışlar (Md.55/a) — önce 3 aşamalı süreç</h3>
+      <ul>
+        <li>Derse/etkinliklere vaktinde gelmemeyi tekrar etmek</li>
+        <li>Devamsızlığı belgelendirmemek, izin süresini özürsüz uzatmak</li>
+        <li>Yatılı bölge ortaokullarında dolabı amacı dışı kullanmak</li>
+        <li>Okula yasaklanmış malzeme getirmek ve kullanmak</li>
+        <li>Yalan söylemek</li>
+        <li>Duvar, sıra, okul çevresini kirletmek</li>
+        <li>Görgü kurallarına uymamak</li>
+        <li>Ödünç alınan kitap/araç/gereci zamanında teslim etmemek</li>
+        <li>Kılık kıyafet kurallarına uymamak</li>
+      </ul>
+
+      <h3>5.2 Kınama Gerektiren Davranışlar (Md.55/b) — doğrudan kurula sevk</h3>
+      <ul>
+        <li>Yöneticilere, öğretmenlere, arkadaşlarına kaba/saygısız davranmak</li>
+        <li>Ders ortamını bozmak, ders/etkinlikleri engellemek</li>
+        <li>Okul yönetimini yanlış bilgilendirmeyi, yalanı alışkanlık hâline getirmek</li>
+        <li>Törenlere özürsüz katılmamak, uygunsuz davranmak</li>
+        <li>Okulda/okul dışında sigara içmek</li>
+        <li>Resmî evrakta değişiklik yapmak</li>
+        <li>Okulda kavga etmek</li>
+        <li>Sınıfta cep telefonu kullanmak</li>
+        <li>Başkasının malını izinsiz almak</li>
+        <li>Okul/öğrenci eşyasına kasıtlı zarar vermek</li>
+        <li>Kılık kıyafet kurallarına uymamakta ısrar etmek</li>
+        <li>Okul mekân/malzemesini izinsiz ve amaç dışı kullanmak</li>
+        <li>Yatılı bölge ortaokulunda izinsiz okulu terk etmek/gece dışarıda kalmak</li>
+        <li>Sınavda kopya çekmek/vermek</li>
+        <li>Akranların sosyal-duygusal gelişimini olumsuz etkileyecek davranışı alışkanlık hâline getirmek</li>
+        <li>Bilişim araçlarını belirlenen usule aykırı kullanmak</li>
+      </ul>
+
+      <h3>5.3 Okul Değiştirme Gerektiren Davranışlar (Md.55/c) — doğrudan kurula sevk + ilçe onayı</h3>
+      <ul>
+        <li>Anayasal temel ilkelere aykırı davranışlarda bulunmak/bulundurmaya zorlamak</li>
+        <li>Sarkıntılık, hakaret, iftira, tehdit, taciz etmek veya kışkırtmak</li>
+        <li>Okula yaralayıcı/öldürücü alet getirmek, bulundurmak</li>
+        <li>Okul ve çevresinde kasıtlı yangın çıkarmak</li>
+        <li>Mekân/malzemeyi amaç dışı kullanmayı alışkanlık hâline getirmek</li>
+        <li>Siyasi parti/sendika propagandası yapmak, eylemlere katılmak</li>
+        <li>Kurum/örgüt adına izinsiz yardım/para toplamak</li>
+        <li>Kişi/grupları dil, ırk, cinsiyet, düşünce, inanca göre ayırmak, kötülemek</li>
+        <li>Malına zarar vermeyi/izinsiz almayı alışkanlık hâline getirmek</li>
+        <li>Okul mal varlığını tahrip etmeyi alışkanlık hâline getirmek</li>
+        <li>Ders/sınavların yapılmasına engel olmak</li>
+        <li>Yöneticilere, öğretmenlere, personele, arkadaşlarına şiddet uygulamak/kışkırtmak</li>
+        <li>Yatılı bölge ortaokulunda geceyi izinsiz dışarıda geçirmeyi alışkanlık hâline getirmek</li>
+        <li>Okulla ilişiği olmayan kişileri barındırmak</li>
+        <li>Sınava başkasını sokmak/başkası yerine girmek</li>
+        <li>Alkol/bağımlılık yapan madde kullanmak veya kullanmaya teşvik etmek</li>
+        <li>Dijital araç/sosyal medya ile kişilik haklarını ihlal edecek kayıt/yayın yapmak</li>
+      </ul>
+      <div class="note-box">
+        <div class="note-title">Nakil gidilecek okul yoksa (Md.56/7)</div>
+        <div class="note-text">Okul değiştirme yaptırımı gerektiren bir davranış tespit edilse dahi, öğrencinin yerleşim biriminde nakledilebileceği başka bir ortaokul yoksa yaptırım bir alt derece olan KINAMA olarak uygulanır.</div>
+      </div>
+    </section>
+
+    <section class="card" id="s6">
+      <h2>6. Süreç Akışı — Karar Ağacı</h2>
+      <p>Bu akışın görsel hâlini <a href="index.html#belgeler">ana sayfadaki tıklanabilir şemada</a> da bulabilirsiniz.</p>
+      <h3>YOL A — Md.55/a Listesindeki (Uyarma Düzeyi) Bir Davranışla İLK KEZ Karşılaşıldı</h3>
+      <ol class="flow-steps">
+        <li>Bölüm 4&rsquo;teki 3 aşamalı süreci uygulayın: Sözlü uyarı (<a class="ek-link" href="ek/ek-02.html">EK-2</a>) → Sözleşme (<a class="ek-link" href="ek/ek-03.html">EK-3</a>) → Veli görüşmesi (<a class="ek-link" href="ek/ek-04.html">EK-4</a>).</li>
+        <li>Süreç sonunda davranış düzeldiyse: dosyaya kaldırılır, ek işlem gerekmez.</li>
+        <li>Süreç sonunda davranış sürüyorsa: <a class="ek-link" href="ek/ek-05.html">EK-5</a> ile kurula sevk edin → YOL B&rsquo;nin 3. adımından devam edin.</li>
+      </ol>
+      <h3>YOL B — Md.55/b veya Md.55/c Listesindeki Bir Davranış ya da YOL A&rsquo;nın Sonu</h3>
+      <ol class="flow-steps">
+        <li>Olay/şikâyet okul müdürüne ya da doğrudan kurula bildirilir; öğretmen raporu ve dosya hazırlanır (<a class="ek-link" href="ek/ek-05.html">EK-5</a>).</li>
+        <li>Kurul başkanı, en geç 5 iş günü içinde kurulu toplantıya çağırır → <a class="ek-link" href="ek/ek-06.html">EK-6</a>.</li>
+        <li>Öğrenci ve varsa tanıkların ifadeleri, kurul başkanınca (rehberlik öğretmeni yoksa görevlendirilecek bir öğretmen eşliğinde) alınır ve tutanağa geçirilir (Md.60/1-2) → <a class="ek-link" href="ek/ek-07.html">EK-7</a>.</li>
+        <li>Kurul, kendisine ulaşan dosyayı en geç 5 iş günü içinde inceler ve karara bağlar (Md.59/3) → <a class="ek-link" href="ek/ek-08.html">EK-8</a>.</li>
+        <li>Karar UYARMA veya KINAMA ise: okul müdürünün onayından sonra sonuçlanır, veliye tebliğ edilir (Md.62/1) → <a class="ek-link" href="ek/ek-09.html">EK-9</a>.</li>
+        <li>Karar OKUL DEĞİŞTİRME ise: dosya en geç 5 iş günü içinde İlçe Öğrenci Davranışlarını Değerlendirme Kuruluna gönderilir (Md.61/1) → <a class="ek-link" href="ek/ek-10.html">EK-10</a>. İlçe kurulu en geç 15 gün içinde karar verir (Md.64/3).</li>
+        <li>Karar, e-Okul sistemindeki öğrenci bilgileri bölümüne işlenir (Md.56/13).</li>
+        <li>Veli, tebliğ tarihinden itibaren 5 iş günü içinde okul müdürlüğüne itiraz edebilir (Md.56/11) → <a class="ek-link" href="ek/ek-11.html">EK-11</a>. İtiraz sonuçlanana kadar yaptırım uygulanmaz (Md.56/12).</li>
+      </ol>
+    </section>
+
+    <section class="card" id="s7">
+      <h2>7. Tekrar Eden Davranışlar İçin Kurallar</h2>
+      <h3>7.1 Bir Üst Yaptırım Kuralı (Md.56/5)</h3>
+      <p>Aynı olumsuz davranışın AYNI EĞİTİM VE ÖĞRETİM YILI İÇİNDE tekrarı hâlinde bir üst yaptırım uygulanır:</p>
+      <table>
+        <tr><th>Sıra</th><th>Uygulanan Yaptırım</th></tr>
+        <tr><td>1. kez</td><td>Uyarma süreci (Md.55/a davranışıysa) veya ilgili doğrudan yaptırım</td></tr>
+        <tr><td>Tekrarında</td><td>Uyarma → Kınama</td></tr>
+        <tr><td>Tekrarında</td><td>Kınama → Okul Değiştirme</td></tr>
+      </table>
+      <div class="note-box">
+        <div class="note-title">Takip Sorumluluğu</div>
+        <div class="note-text">Bir öğrencinin o eğitim-öğretim yılı içinde aldığı tüm uyarı/sözleşme/kınama kayıtları, kurul başkanı tarafından öğrenci bazlı bir dosyada izlenmelidir. Yeni bir olayla karşılaşıldığında önce bu dosyaya bakılarak &ldquo;ilk mi, tekrar mı&rdquo; olduğu tespit edilir.</div>
+      </div>
+      <h3>7.2 Yaptırım Takdirinde Dikkat Edilecek Hususlar (Md.56/1)</h3>
+      <ul>
+        <li>Davranışın niteliği, önemi, gerçekleştiği şartlar, öğrencinin o andaki durumu ve kişisel özellikleri</li>
+        <li>Öğrencinin okul içi/dışı genel durumu</li>
+        <li>Yaş ve cinsiyeti</li>
+        <li>Derslerdeki ilgi ve başarısı</li>
+        <li>Sosyal/kültürel faaliyetlere katılım ve başarı durumu</li>
+        <li>Aynı eğitim-öğretim yılı içinde daha önce yaptırım uygulanıp uygulanmadığı</li>
+      </ul>
+      <p>Çocuk Koruma Kanunu kapsamındaki öğrenciler için bir alt yaptırım da takdir edilebilir (Md.56/2).</p>
+    </section>
+
+    <section class="card" id="s8">
+      <h2>8. Yaptırımların Diğer Süreçlerle Etkileşimi</h2>
+      <ul>
+        <li>Kınama veya okul değiştirme alan öğrenciye o eğitim-öğretim yılı içinde Teşekkür/Takdir belgesi verilmez (Md.56/10).</li>
+        <li>20 gün ve üzeri özürsüz devamsızlık nedeniyle şube öğretmenler kurulu kararıyla sınıf geçenlere teşekkür/takdir belgesi verilmez (Md.53/4).</li>
+        <li>Okulun/öğrencilerin eşyasına verilen maddi zarar, öğrencinin velisine ödettirilir (Md.65).</li>
+        <li>Davranışı tekrarlamayan ve olumlu davranış gözlenen öğrencinin yaptırımı, kurulun dönem sonu toplantısında alacağı kararla dosyadan kaldırılabilir (Md.62/3) → <a class="ek-link" href="ek/ek-12.html">EK-12</a>.</li>
+      </ul>
+    </section>
+
+    <section class="card" id="s9">
+      <h2>9. Süre Çizelgesi (Tek Bakışta)</h2>
+      <table class="quickref">
+        <tr><th>İşlem</th><th>Süre</th><th>Dayanak</th></tr>
+        <tr><td>Kurula ulaşan dosyanın incelenip karara bağlanması</td><td>En geç 5 iş günü</td><td>Md.59/3</td></tr>
+        <tr><td>Alınan kararın okul müdürlüğüne bildirilmesi</td><td>En geç 2 iş günü</td><td>Md.59/3</td></tr>
+        <tr><td>Okul değiştirme dosyasının ilçe kuruluna gönderilmesi</td><td>En geç 5 iş günü</td><td>Md.61/1</td></tr>
+        <tr><td>Müdürün kurul kararına itirazını ekleyip dosyayı iade etmesi</td><td>En geç 5 iş günü</td><td>Md.60/4</td></tr>
+        <tr><td>İlçe kurulunun dosyayı görüşmek üzere toplanması</td><td>En geç 5 iş günü</td><td>Md.64/3</td></tr>
+        <tr><td>İlçe kurulunun karar verme süresi</td><td>En geç 15 gün</td><td>Md.64/3</td></tr>
+        <tr><td>Velinin karara itiraz süresi</td><td>Tebliğden itibaren 5 iş günü</td><td>Md.56/11</td></tr>
+        <tr><td>Yaptırımı kalkan öğrencinin e-Okul dosyasından çıkarılması</td><td>En geç 5 iş günü</td><td>Md.62/3</td></tr>
+      </table>
+    </section>
+
+    <section class="card" id="s10">
+      <h2>10. Hızlı Başvuru — Tek Sayfa Kontrol Listesi</h2>
+      <div class="note-box">
+        <div class="note-title">Bir olayla karşılaştığınızda sırayla sorun</div>
+        <div class="note-text">1) Davranış Md.55&rsquo;teki hangi listede? (Bölüm 5)&nbsp; 2) Bu davranış bu öğrenci için ilk mi, tekrar mı?&nbsp; 3) İlkse ve Md.55/a&rsquo;daysa → 3 aşamalı süreç. Değilse veya süreç tükendiyse → doğrudan kurula sevk.&nbsp; 4) Kurul toplanır, ifade alınır, karar yazılır.&nbsp; 5) Karar türüne göre tebliğ veya ilçeye sevk belgesi doldurulur.&nbsp; 6) Süresi içinde e-Okul&rsquo;a işlenir, veliye tebliğ edilir, itiraz hakkı hatırlatılır.</div>
+      </div>
+      <table class="quickref">
+        <tr><th>Durum</th><th>Yapılacak İlk İşlem</th></tr>
+        <tr><td>İlk kez, hafif davranış (Md.55/a)</td><td><a class="ek-link" href="ek/ek-02.html">EK-2</a> doldurulur, öğrenci dosyasına konur.</td></tr>
+        <tr><td>Hafif davranış tekrarlandı</td><td><a class="ek-link" href="ek/ek-03.html">EK-3</a> Öğrenci Sözleşmesi imzalatılır.</td></tr>
+        <tr><td>Sözleşmeye rağmen sürüyor</td><td><a class="ek-link" href="ek/ek-04.html">EK-4</a> ile veli okula davet edilir.</td></tr>
+        <tr><td>3 aşama tükendi / davranış ağır (Md.55/b-c)</td><td><a class="ek-link" href="ek/ek-05.html">EK-5</a> ile kurula sevk edilir.</td></tr>
+        <tr><td>Kurul dosyayı aldı</td><td><a class="ek-link" href="ek/ek-06.html">EK-6</a> çağrı → <a class="ek-link" href="ek/ek-07.html">EK-7</a> ifade → <a class="ek-link" href="ek/ek-08.html">EK-8</a> karar.</td></tr>
+        <tr><td>Karar: Uyarma/Kınama</td><td>Müdür onayı + <a class="ek-link" href="ek/ek-09.html">EK-9</a> ile veliye tebliğ + e-Okul.</td></tr>
+        <tr><td>Karar: Okul Değiştirme</td><td><a class="ek-link" href="ek/ek-10.html">EK-10</a> ile ilçe kuruluna 5 iş günü içinde gönder.</td></tr>
+        <tr><td>Veli itiraz etti</td><td><a class="ek-link" href="ek/ek-11.html">EK-11</a> alınır; itiraz sonuçlanana dek yaptırım uygulanmaz.</td></tr>
+        <tr><td>Öğrenci dönem boyunca düzeldi</td><td>Dönem sonu kurul toplantısında <a class="ek-link" href="ek/ek-12.html">EK-12</a> ile yaptırım dosyadan kaldırılabilir.</td></tr>
+      </table>
+    </section>
+
+    <footer class="site">
+      Millî Eğitim Bakanlığı Okul Öncesi Eğitim ve İlköğretim Kurumları Yönetmeliği Md.54-65 esas alınarak hazırlanmıştır — yalnızca ortaokul/imam-hatip ortaokulu kademesi içindir.
+    </footer>
+  </div>
+
+<script src="assets/app.js"></script>
+</body>
+</html>

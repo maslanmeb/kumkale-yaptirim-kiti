@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EK-9 YAPTIRIM KARARININ VELİYE TEBLİĞ FORMU</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+  <div class="toolbar">
+    <a class="back" href="../index.html">&larr; Ana Sayfa</a>
+    <span class="hint">Alanları doldurun, ardından &quot;Yazdır / PDF Al&quot; ile A4 boyutunda PDF olarak kaydedin.</span>
+    <div class="btns">
+      <button class="secondary" type="button" onclick="clearForm()">Formu Temizle</button>
+      <button type="button" onclick="window.print()">🖨️ Yazdır / PDF Al</button>
+    </div>
+  </div>
+
+  <div class="page">
+    <div class="school-line" id="okulAdi" contenteditable="true" spellcheck="false"></div>
+    <div class="school-hint">↑ Farklı okul için bu satırı tıklayıp değiştirebilirsiniz</div>
+    <div class="school-sub">Öğrenci Davranışlarını Değerlendirme Süreci</div>
+
+    <div class="ek-tag">EK-9</div>
+    <h1>YAPTIRIM KARARININ VELİYE TEBLİĞ FORMU</h1>
+    <div class="dayanak">Dayanak: Md.62/1 (uyarma/kınama) — Md.62/2 (okul değiştirme)</div>
+
+    <table class="meta">
+      <tr><td class="label">Öğrencinin Adı Soyadı</td><td><input type="text" id="ogrenciAd"></td></tr>
+      <tr><td class="label">Sınıf / Şube</td><td><input type="text" id="sinifSube"></td></tr>
+      <tr><td class="label">Karar Tarihi / No (EK-8)</td><td><input type="text" id="kararNo"></td></tr>
+    </table>
+    <div class="section-title">Uygulanan Yaptırım</div>
+
+    <div class="check-group">
+      <div class="radio-row"><input type="radio" name="yaptirim" id="yaptirim_0" value="uyarma"><label for="yaptirim_0">Uyarma</label></div>
+      <div class="radio-row"><input type="radio" name="yaptirim" id="yaptirim_1" value="kinama"><label for="yaptirim_1">Kınama</label></div>
+      <div class="radio-row"><input type="radio" name="yaptirim" id="yaptirim_2" value="okulDegistirme"><label for="yaptirim_2">Okul Değiştirme</label></div>
+    </div>
+
+    <table class="meta">
+      <tr><td class="label">Tebliğ Tarihi</td><td><input type="date" id="tebligTarihi"></td></tr>
+      <tr><td class="label">Tebliğ Şekli</td><td><select class="field" id="tebligSekli"><option value="">Seçiniz...</option><option>Elden</option><option>Telefonla</option><option>Posta (Tebligat Kanunu)</option><option>Bilgi ve iletişim araçlarıyla / SMS</option></select></td></tr>
+    </table>
+    <div class="para">Yukarıda kimliği belirtilen öğrenci hakkında Öğrenci Davranışlarını Değerlendirme Kurulunca alınan ve okul müdürünce onaylanan karar tarafıma tebliğ edilmiştir. Karara karşı tebliğ tarihinden itibaren 5 (beş) iş günü içinde okul müdürlüğüne yazılı olarak itiraz edebileceğim konusunda bilgilendirildim (Md.56/11).</div>
+
+    <div class="section-title">Kararın Özeti</div>
+
+    <textarea id="kararOzeti" rows="3"></textarea>
+
+    <div class="note-box">
+      <div class="note-title">Veli çağrıya gelmezse (okul değiştirme kararı için)</div>
+      <div class="note-text">Md.62/2 uyarınca veli, karar tebliğ edilmek üzere okula çağrılır. Çağrıya uyulmazsa 7201 sayılı Tebligat Kanununa göre tebligat yapılır ve tebellüğ belgesi dosyada saklanır.</div>
+    </div>
+
+    <table class="imza">
+      <tr>
+        <td>
+          <div class="imza-box"></div>
+          <input class="imza-name" type="text" placeholder="Ad Soyad">
+          <div class="imza-label">Okul Müdürü</div>
+        </td>
+        <td>
+          <div class="imza-box"></div>
+          <input class="imza-name" type="text" placeholder="Ad Soyad">
+          <div class="imza-label">Öğrenci Velisi (veya Tebligat Kanununa göre tebliğ)</div>
+        </td>
+      </tr>
+    </table>
+
+
+    <div class="foot">
+      <span>Öğrenci Davranışları Yaptırım Süreci &ndash; Ek Belge</span>
+      <span>EK-9</span>
+    </div>
+  </div>
+
+<script src="../assets/app.js"></script>
+</body>
+</html>

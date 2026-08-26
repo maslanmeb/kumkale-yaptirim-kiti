@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EK-7 İFADE ALMA TUTANAĞI</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+  <div class="toolbar">
+    <a class="back" href="../index.html">&larr; Ana Sayfa</a>
+    <span class="hint">Alanları doldurun, ardından &quot;Yazdır / PDF Al&quot; ile A4 boyutunda PDF olarak kaydedin.</span>
+    <div class="btns">
+      <button class="secondary" type="button" onclick="clearForm()">Formu Temizle</button>
+      <button type="button" onclick="window.print()">🖨️ Yazdır / PDF Al</button>
+    </div>
+  </div>
+
+  <div class="page">
+    <div class="school-line" id="okulAdi" contenteditable="true" spellcheck="false"></div>
+    <div class="school-hint">↑ Farklı okul için bu satırı tıklayıp değiştirebilirsiniz</div>
+    <div class="school-sub">Öğrenci Davranışlarını Değerlendirme Süreci</div>
+
+    <div class="ek-tag">EK-7</div>
+    <h1>İFADE ALMA TUTANAĞI</h1>
+    <div class="dayanak">Dayanak: Md.60/1-2</div>
+
+    <table class="meta">
+      <tr><td class="label">İfadesi Alınan Kişi</td><td><input type="text" id="kisiAd"></td></tr>
+      <tr><td class="label">Sıfatı</td><td><input type="text" id="sifat" placeholder="ör. öğrenci, tanık"></td></tr>
+      <tr><td class="label">Tarih</td><td><input type="date" id="tarih"></td></tr>
+      <tr><td class="label">Saat</td><td><input type="time" id="saat"></td></tr>
+      <tr><td class="label">İfadeyi Alan Kurul Başkanı</td><td><input type="text" id="baskanAd"></td></tr>
+      <tr><td class="label">Eşlik Eden Öğretmen</td><td><input type="text" id="ogretmenAd"></td></tr>
+    </table>
+    <div class="section-sub">Rehberlik öğretmeni normu bulunmadığından, Md.60/1 uyarınca ifade alma işlemine bir öğretmen eşlik eder.</div>
+
+    <div class="section-title">İfade Metni</div>
+
+    <textarea id="ifadeMetni" rows="6"></textarea>
+
+    <div class="section-title">Çağrıldığı Hâlde Gelmeme / İfade Vermeme Durumu</div>
+
+    <div class="check-group">
+      <div class="radio-row"><input type="radio" name="cagriDurumu" id="cagriDurumu_0" value="uyuldu"><label for="cagriDurumu_0">Çağrıya uyuldu, ifade verildi</label></div>
+      <div class="radio-row"><input type="radio" name="cagriDurumu" id="cagriDurumu_1" value="uyulmadi"><label for="cagriDurumu_1">Çağrıya uyulmadı (tutanakla tespit edilmiştir)</label></div>
+    </div>
+
+    <table class="imza">
+      <tr>
+        <td>
+          <div class="imza-box"></div>
+          <input class="imza-name" type="text" placeholder="Ad Soyad">
+          <div class="imza-label">İfadesi Alınan Kişi</div>
+        </td>
+        <td>
+          <div class="imza-box"></div>
+          <input class="imza-name" type="text" placeholder="Ad Soyad">
+          <div class="imza-label">Eşlik Eden Öğretmen</div>
+        </td>
+        <td>
+          <div class="imza-box"></div>
+          <input class="imza-name" type="text" placeholder="Ad Soyad">
+          <div class="imza-label">Kurul Başkanı</div>
+        </td>
+      </tr>
+    </table>
+
+
+    <div class="foot">
+      <span>Öğrenci Davranışları Yaptırım Süreci &ndash; Ek Belge</span>
+      <span>EK-7</span>
+    </div>
+  </div>
+
+<script src="../assets/app.js"></script>
+</body>
+</html>

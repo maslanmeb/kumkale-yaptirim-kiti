@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EK-1 ÖĞRENCİ DAVRANIŞLARINI DEĞERLENDİRME KURULU OLUŞTURMA TUTANAĞI</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+  <div class="toolbar">
+    <a class="back" href="../index.html">&larr; Ana Sayfa</a>
+    <span class="hint">Alanları doldurun, ardından &quot;Yazdır / PDF Al&quot; ile A4 boyutunda PDF olarak kaydedin.</span>
+    <div class="btns">
+      <button class="secondary" type="button" onclick="clearForm()">Formu Temizle</button>
+      <button type="button" onclick="window.print()">🖨️ Yazdır / PDF Al</button>
+    </div>
+  </div>
+
+  <div class="page">
+    <div class="school-line" id="okulAdi" contenteditable="true" spellcheck="false"></div>
+    <div class="school-hint">↑ Farklı okul için bu satırı tıklayıp değiştirebilirsiniz</div>
+    <div class="school-sub">Öğrenci Davranışlarını Değerlendirme Süreci</div>
+
+    <div class="ek-tag">EK-1</div>
+    <h1>ÖĞRENCİ DAVRANIŞLARINI DEĞERLENDİRME KURULU OLUŞTURMA TUTANAĞI</h1>
+    <div class="dayanak">Dayanak: Md.57</div>
+
+    <div class="section-sub">Bu kurul, ders yılı başındaki ilk öğretmenler kurulu toplantısında oluşturulur ve yeni kurul oluşana kadar görevine devam eder.</div>
+
+    <table class="meta">
+      <tr><td class="label">Eğitim ve Öğretim Yılı</td><td><input type="text" id="egitimYili" placeholder="ör. 2026-2027"></td></tr>
+    </table>
+    <div class="section-title">A) Kurul Başkanı</div>
+    <div class="section-sub">Müdürün görevlendirdiği müdür yardımcısı — Md.57/2-a</div>
+
+    <table class="meta">
+      <tr><td class="label">Adı Soyadı</td><td><input type="text" id="baskanAd"></td></tr>
+      <tr><td class="label">Görevlendirme Tarihi</td><td><input type="date" id="baskanTarih"></td></tr>
+    </table>
+    <div class="section-title">B) Öğretmen Üyeler</div>
+    <div class="section-sub">Öğretmenler Kurulunda gizli oyla seçilir — Md.57/2-b</div>
+
+    <table class="meta">
+      <tr><td class="label" style="width:26%"></td><td class="label" style="width:38%">Adı Soyadı</td><td class="label" style="width:18%">Branşı</td><td class="label">Aldığı Oy</td></tr>
+      <tr><td class="label">Asıl Üye 1</td><td><input type="text" id="ogrUye0_ad"></td><td><input type="text" id="ogrUye0_brans"></td><td><input type="text" id="ogrUye0_oy"></td></tr>
+      <tr><td class="label">Asıl Üye 2</td><td><input type="text" id="ogrUye1_ad"></td><td><input type="text" id="ogrUye1_brans"></td><td><input type="text" id="ogrUye1_oy"></td></tr>
+      <tr><td class="label">Asıl Üye 3</td><td><input type="text" id="ogrUye2_ad"></td><td><input type="text" id="ogrUye2_brans"></td><td><input type="text" id="ogrUye2_oy"></td></tr>
+      <tr><td class="label">Yedek Üye 1</td><td><input type="text" id="ogrUye3_ad"></td><td><input type="text" id="ogrUye3_brans"></td><td><input type="text" id="ogrUye3_oy"></td></tr>
+      <tr><td class="label">Yedek Üye 2</td><td><input type="text" id="ogrUye4_ad"></td><td><input type="text" id="ogrUye4_brans"></td><td><input type="text" id="ogrUye4_oy"></td></tr>
+      <tr><td class="label">Yedek Üye 3</td><td><input type="text" id="ogrUye5_ad"></td><td><input type="text" id="ogrUye5_brans"></td><td><input type="text" id="ogrUye5_oy"></td></tr>
+    </table>
+
+    <div class="section-title">C) Veli Üyesi</div>
+    <div class="section-sub">Okul-Aile Birliğince kendi üyeleri arasından seçilir — Md.57/2-c</div>
+
+    <table class="meta">
+      <tr><td class="label">Adı Soyadı</td><td><input type="text" id="veliUyeAd"></td></tr>
+      <tr><td class="label">Okul-Aile Birliğindeki Görevi</td><td><input type="text" id="veliUyeGorev"></td></tr>
+    </table>
+    <div class="note-box">
+      <div class="note-title">Not</div>
+      <div class="note-text">Kurulun görevi yeni kurul oluşana kadar devam eder (Md.57/6). Rehberlik öğretmeni normu bulunmadığından kurul toplantılarına rehberlik öğretmeni katılımı bu okulda uygulanmaz; ihtiyaç hâlinde kurul, RAM ile yazışma yoluyla görüş alabilir.</div>
+    </div>
+
+    <table class="imza">
+      <tr>
+        <td>
+          <div class="imza-box"></div>
+          <input class="imza-name" type="text" placeholder="Ad Soyad">
+          <div class="imza-label">Öğretmenler Kurulu Kâtibi</div>
+        </td>
+        <td>
+          <div class="imza-box"></div>
+          <input class="imza-name" type="text" placeholder="Ad Soyad">
+          <div class="imza-label">Kurul Başkanı</div>
+        </td>
+        <td>
+          <div class="imza-box"></div>
+          <input class="imza-name" type="text" placeholder="Ad Soyad">
+          <div class="imza-label">Okul Müdürü (Onay)</div>
+        </td>
+      </tr>
+    </table>
+
+
+    <div class="foot">
+      <span>Öğrenci Davranışları Yaptırım Süreci &ndash; Ek Belge</span>
+      <span>EK-1</span>
+    </div>
+  </div>
+
+<script src="../assets/app.js"></script>
+</body>
+</html>

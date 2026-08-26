@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EK-6 KURUL TOPLANTI ÇAĞRISI VE GÜNDEMİ</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+  <div class="toolbar">
+    <a class="back" href="../index.html">&larr; Ana Sayfa</a>
+    <span class="hint">Alanları doldurun, ardından &quot;Yazdır / PDF Al&quot; ile A4 boyutunda PDF olarak kaydedin.</span>
+    <div class="btns">
+      <button class="secondary" type="button" onclick="clearForm()">Formu Temizle</button>
+      <button type="button" onclick="window.print()">🖨️ Yazdır / PDF Al</button>
+    </div>
+  </div>
+
+  <div class="page">
+    <div class="school-line" id="okulAdi" contenteditable="true" spellcheck="false"></div>
+    <div class="school-hint">↑ Farklı okul için bu satırı tıklayıp değiştirebilirsiniz</div>
+    <div class="school-sub">Öğrenci Davranışlarını Değerlendirme Süreci</div>
+
+    <div class="ek-tag">EK-6</div>
+    <h1>KURUL TOPLANTI ÇAĞRISI VE GÜNDEMİ</h1>
+    <div class="dayanak">Dayanak: Md.59/1</div>
+
+    <table class="meta">
+      <tr><td class="label">Toplantı Tarihi</td><td><input type="date" id="toplantiTarihi"></td></tr>
+      <tr><td class="label">Toplantı Saati</td><td><input type="time" id="toplantiSaati"></td></tr>
+      <tr><td class="label">Toplantı Yeri</td><td><input type="text" id="toplantiYeri"></td></tr>
+      <tr><td class="label">Çağrıyı Yapan (Kurul Başkanı)</td><td><input type="text" id="cagriYapan"></td></tr>
+    </table>
+    <div class="section-title">Gündem</div>
+    <div class="section-sub">Görüşülecek öğrenci/dosya ve ilgili EK-5 sevk tarihi</div>
+
+    <div class="dyn-list" data-placeholder="ör. Ahmet Y. — sınıfta kavga (EK-5 sevk tarihi: 14.09.2026)"></div>
+
+    <div class="section-title">Toplantıya Çağrılan Üyeler ve Tebliğ Tarihleri</div>
+
+    <table class="meta">
+      <tr><td class="label" style="width:40%">Kurul Başkanı</td><td><input type="date" id="uyeTebligTarih0"></td></tr>
+      <tr><td class="label" style="width:40%">Öğretmen Üye 1</td><td><input type="date" id="uyeTebligTarih1"></td></tr>
+      <tr><td class="label" style="width:40%">Öğretmen Üye 2</td><td><input type="date" id="uyeTebligTarih2"></td></tr>
+      <tr><td class="label" style="width:40%">Öğretmen Üye 3</td><td><input type="date" id="uyeTebligTarih3"></td></tr>
+      <tr><td class="label" style="width:40%">Veli Üyesi</td><td><input type="date" id="uyeTebligTarih4"></td></tr>
+    </table>
+
+    <div class="note-box">
+      <div class="note-title">Katılım kuralı</div>
+      <div class="note-text">Şikâyetçi, zarar gören veya olumsuz davranışta bulunanla ikinci dereceye kadar akrabalığı olan üyeler bu toplantıya katılamaz (Md.59/2). Üyeler kabul edilebilir bir özrü olmadıkça katılmaktan kaçınamaz.</div>
+    </div>
+
+    <table class="imza">
+      <tr>
+        <td>
+          <div class="imza-box"></div>
+          <input class="imza-name" type="text" placeholder="Ad Soyad">
+          <div class="imza-label">Kurul Başkanı</div>
+        </td>
+      </tr>
+    </table>
+
+
+    <div class="foot">
+      <span>Öğrenci Davranışları Yaptırım Süreci &ndash; Ek Belge</span>
+      <span>EK-6</span>
+    </div>
+  </div>
+
+<script src="../assets/app.js"></script>
+</body>
+</html>

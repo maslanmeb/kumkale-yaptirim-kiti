@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EK-3 ÖĞRENCİ SÖZLEŞMESİ</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+  <div class="toolbar">
+    <a class="back" href="../index.html">&larr; Ana Sayfa</a>
+    <span class="hint">Alanları doldurun, ardından &quot;Yazdır / PDF Al&quot; ile A4 boyutunda PDF olarak kaydedin.</span>
+    <div class="btns">
+      <button class="secondary" type="button" onclick="clearForm()">Formu Temizle</button>
+      <button type="button" onclick="window.print()">🖨️ Yazdır / PDF Al</button>
+    </div>
+  </div>
+
+  <div class="page">
+    <div class="school-line" id="okulAdi" contenteditable="true" spellcheck="false"></div>
+    <div class="school-hint">↑ Farklı okul için bu satırı tıklayıp değiştirebilirsiniz</div>
+    <div class="school-sub">Öğrenci Davranışlarını Değerlendirme Süreci</div>
+
+    <div class="ek-tag">EK-3</div>
+    <h1>ÖĞRENCİ SÖZLEŞMESİ</h1>
+    <div class="dayanak">Dayanak: Md.54/3-b — Uyarma sürecinin 2. aşaması (Yönetmelik EK-9 karşılığı)</div>
+
+    <table class="meta">
+      <tr><td class="label">Öğrencinin Adı Soyadı</td><td><input type="text" id="ogrenciAd"></td></tr>
+      <tr><td class="label">Sınıf / Şube</td><td><input type="text" id="sinifSube"></td></tr>
+      <tr><td class="label">Tarih</td><td><input type="date" id="tarih"></td></tr>
+    </table>
+    <div class="section-title">Sözlü Uyarıya Konu Olan ve Sürdürülen Davranış</div>
+
+    <textarea id="davranis" rows="3" placeholder="Davranışı buraya yazınız..."></textarea>
+
+    <div class="para">Ben, aşağıda kimliği belirtilen öğrenci, yukarıda belirtilen olumsuz davranışımı sürdürmeyeceğimi; okul kurallarına uyacağımı ve öğretmenim ile aşağıda birlikte belirlediğimiz olumlu davranışları göstermeye çalışacağımı kabul ve taahhüt ederim. Bu davranışı sürdürmem hâlinde velimin okula davet edileceğini ve gerekirse Öğrenci Davranışlarını Değerlendirme Kuruluna sevk edilebileceğimi biliyorum.</div>
+
+    <div class="section-title">Birlikte Belirlenen Olumlu Davranış Hedefleri</div>
+
+    <div class="dyn-list" data-placeholder="Bir hedef yazınız..."></div>
+
+    <table class="imza">
+      <tr>
+        <td>
+          <div class="imza-box"></div>
+          <input class="imza-name" type="text" placeholder="Ad Soyad">
+          <div class="imza-label">Öğrenci</div>
+        </td>
+        <td>
+          <div class="imza-box"></div>
+          <input class="imza-name" type="text" placeholder="Ad Soyad">
+          <div class="imza-label">Görüşmeyi Yapan Öğretmen</div>
+        </td>
+        <td>
+          <div class="imza-box"></div>
+          <input class="imza-name" type="text" placeholder="Ad Soyad">
+          <div class="imza-label">Öğrenci Velisi (bilgilendirilmiştir)</div>
+        </td>
+      </tr>
+    </table>
+
+
+    <div class="foot">
+      <span>Öğrenci Davranışları Yaptırım Süreci &ndash; Ek Belge</span>
+      <span>EK-3</span>
+    </div>
+  </div>
+
+<script src="../assets/app.js"></script>
+</body>
+</html>

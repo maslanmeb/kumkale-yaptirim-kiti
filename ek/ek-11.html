@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EK-11 VELİ İTİRAZ DİLEKÇESİ ÖRNEĞİ</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+  <div class="toolbar">
+    <a class="back" href="../index.html">&larr; Ana Sayfa</a>
+    <span class="hint">Alanları doldurun, ardından &quot;Yazdır / PDF Al&quot; ile A4 boyutunda PDF olarak kaydedin.</span>
+    <div class="btns">
+      <button class="secondary" type="button" onclick="clearForm()">Formu Temizle</button>
+      <button type="button" onclick="window.print()">🖨️ Yazdır / PDF Al</button>
+    </div>
+  </div>
+
+  <div class="page">
+    <div class="school-line" id="okulAdi" contenteditable="true" spellcheck="false"></div>
+    <div class="school-hint">↑ Farklı okul için bu satırı tıklayıp değiştirebilirsiniz</div>
+    <div class="school-sub">Öğrenci Davranışlarını Değerlendirme Süreci</div>
+
+    <div class="ek-tag">EK-11</div>
+    <h1>VELİ İTİRAZ DİLEKÇESİ ÖRNEĞİ</h1>
+    <div class="dayanak">Dayanak: Md.56/11-12 — Tebliğ tarihinden itibaren 5 iş günü içinde kullanılır</div>
+
+    <div class="para" style="text-align:center; font-weight:bold; text-transform:uppercase;"><span class="okulAdi-echo"></span> MÜDÜRLÜĞÜNE</div>
+
+    <table class="meta">
+      <tr><td class="label">Öğrencinin Adı Soyadı</td><td><input type="text" id="ogrenciAd"></td></tr>
+      <tr><td class="label">Sınıf / Şube</td><td><input type="text" id="sinifSube"></td></tr>
+      <tr><td class="label">İtiraz Edilen Kararın Tarihi / No</td><td><input type="text" id="kararNo"></td></tr>
+      <tr><td class="label">Kararın Tebliğ Tarihi</td><td><input type="date" id="tebligTarihi"></td></tr>
+    </table>
+    <div class="para">Yukarıda kimliği belirtilen velisi bulunduğum öğrenci hakkında verilen ve tarafıma tebliğ edilen karara aşağıda belirttiğim gerekçelerle itiraz ediyorum. İtirazımın incelenerek 5580 sayılı mevzuat ve Yönetmeliğin ilgili hükümleri çerçevesinde değerlendirilmesini arz ederim.</div>
+
+    <div class="section-title">İtiraz Gerekçe(ler)i</div>
+
+    <div class="dyn-list" data-placeholder="Bir gerekçe yazınız..."></div>
+
+    <table class="meta">
+      <tr><td class="label">Dilekçe Tarihi</td><td><input type="date" id="dilekceTarihi"></td></tr>
+      <tr><td class="label">Velinin Adı Soyadı</td><td><input type="text" id="veliAd"></td></tr>
+      <tr><td class="label">Telefon / İletişim</td><td><input type="text" id="iletisim"></td></tr>
+    </table>
+    <div class="note-box">
+      <div class="note-title">Okul yönetimi için hatırlatma</div>
+      <div class="note-text">İtiraz işlemleri sonuçlanıncaya kadar yaptırım uygulanmaz (Md.56/12). Okul değiştirme kararına yapılan itirazlarda dilekçe, ilgili belgelerle birlikte en geç 5 iş günü içinde ilçe kuruluna gönderilir (Md.60/4, Md.61/2-c).</div>
+    </div>
+
+
+    <div class="foot">
+      <span>Öğrenci Davranışları Yaptırım Süreci &ndash; Ek Belge</span>
+      <span>EK-11</span>
+    </div>
+  </div>
+
+<script src="../assets/app.js"></script>
+</body>
+</html>
