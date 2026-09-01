@@ -43,8 +43,34 @@ function initAutoGrow() {
   });
 }
 
+/* ---------- Alan biçimlendirme: Telefon (kullanıcı nasıl yazarsa yazsın) ---------- */
+function onlyDigits(s, maxLen) {
+  return s.replace(/\D/g, "").slice(0, maxLen);
+}
+function formatPhoneDisplay(raw) {
+  const d = onlyDigits(raw, 11);
+  let out = d.slice(0, 4);
+  if (d.length > 4) out += " - " + d.slice(4, 7);
+  if (d.length > 7) out += " " + d.slice(7, 9);
+  if (d.length > 9) out += " " + d.slice(9, 11);
+  return out;
+}
+function applyFieldFormatting() {
+  document.querySelectorAll('input[type="tel"]').forEach((el) => { el.value = formatPhoneDisplay(el.value); });
+}
+function initFieldFormatting() {
+  document.querySelectorAll('input[type="tel"]').forEach((el) => {
+    el.addEventListener("input", () => {
+      const capped = onlyDigits(el.value, 11);
+      if (el.value !== capped) el.value = capped;
+    });
+    el.addEventListener("blur", () => { el.value = formatPhoneDisplay(el.value); });
+  });
+}
+
 /* ---------- Yazdır / PDF Al (baskı öncesi kutuları kesin olarak büyüt) ---------- */
 function printForm() {
+  applyFieldFormatting();
   document.querySelectorAll("textarea").forEach(autoGrow);
   requestAnimationFrame(() => {
     document.querySelectorAll("textarea").forEach(autoGrow);
@@ -188,4 +214,5 @@ document.addEventListener("DOMContentLoaded", () => {
   initAutoGrow();
   initNoteBoxes();
   initDynLists();
+  initFieldFormatting();
 });

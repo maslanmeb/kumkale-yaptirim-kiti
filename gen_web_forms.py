@@ -329,7 +329,7 @@ body.append(dyn_list("Bir gerekçe yazınız..."))
 body.append(meta_table([
     ("Dilekçe Tarihi", date_field("dilekceTarihi")),
     ("Velinin Adı Soyadı", text_field("veliAd")),
-    ("Telefon / İletişim", text_field("iletisim")),
+    ("Telefon / İletişim", '<input type="tel" id="iletisim" placeholder="0532 - 123 45 67">'),
 ]))
 body.append(note_box(
     "Okul yönetimi için hatırlatma",
