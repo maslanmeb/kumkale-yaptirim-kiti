@@ -391,6 +391,31 @@ body.append(note_box(
     "dizi pusulasına bağlanır; böylece dosyanın eksiksizliği ve belge sırası her zaman denetlenebilir "
     "hâlde tutulur."
 ))
+body.append(note_box(
+    "Dosyada Hangi Ekler Bulunmalı? (örnek liste)",
+    '<strong>Zorunlu ekler</strong> — her dosyada mutlaka bulunmalı:'
+    '<ul style="margin:4px 0 8px 18px; padding:0;">'
+    '<li><a href="ek-05.html">EK-5</a> Öğretmen Raporu / Kurula Sevk Formu</li>'
+    '<li><a href="ek-06.html">EK-6</a> Kurul Toplantı Çağrısı ve Gündemi</li>'
+    '<li><a href="ek-07.html">EK-7</a> İfade Alma Tutanağı</li>'
+    '<li><a href="ek-08.html">EK-8</a> Kurul Karar Tutanağı</li>'
+    '<li><a href="ek-09.html">EK-9</a> Kararın Veliye Tebliğ Formu</li>'
+    '</ul>'
+    '<strong>Duruma göre zorunlu</strong> — ilgili durum oluştuysa mutlaka eklenmeli:'
+    '<ul style="margin:4px 0 8px 18px; padding:0;">'
+    '<li><a href="ek-02.html">EK-2</a>, <a href="ek-03.html">EK-3</a>, <a href="ek-04.html">EK-4</a> — uyarma süreci uygulandıysa</li>'
+    '<li><a href="ek-10.html">EK-10</a> — karar okul değiştirme ise</li>'
+    '<li><a href="ek-11.html">EK-11</a> — veli itiraz ettiyse</li>'
+    '<li><a href="ek-12.html">EK-12</a> — yaptırım sonradan kaldırıldıysa</li>'
+    '</ul>'
+    '<strong>Tavsiye edilen ekler</strong> — yönetmelikte doğrudan istenmez, iyi uygulama için önerilir:'
+    '<ul style="margin:4px 0 0 18px; padding:0;">'
+    '<li>Olaya ilişkin kanıt, tanık beyanı, fotoğraf veya kamera görüntüsü dökümü (varsa)</li>'
+    '<li>Öğrencinin önceki yıllara ait yaptırım kayıtlarının özeti</li>'
+    '<li>Rehberlik/RAM yönlendirme yazışmaları (varsa)</li>'
+    '<li>Veliyle yapılan ek yazışmalar (SMS, e-posta çıktısı vb.)</li>'
+    '</ul>'
+))
 body.append('''    <datalist id="ekTurleri">
       <option value="EK-1 Kurul Oluşturma Tutanağı">
       <option value="EK-2 Sözlü Uyarma Görüşme Notu">
