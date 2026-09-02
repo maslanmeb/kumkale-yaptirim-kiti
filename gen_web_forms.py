@@ -371,4 +371,66 @@ body.append(signature_block(["Kurul Başkanı", "Okul Müdürü (Onay)"]))
 
 write(12, "YAPTIRIMIN DOSYADAN KALDIRILMASI KARAR FORMU", "Md.62/3", "\n".join(body))
 
+# ================= EK-13 =================
+body = []
+body.append(meta_table([
+    ("Öğrencinin Adı Soyadı", text_field("ogrenciAd")),
+    ("Sınıf / Şube", text_field("sinifSube")),
+    ("Dosya Konusu", text_field("dosyaKonusu", "ör. Öğrenci Davranışlarını Değerlendirme Süreci Dosyası")),
+    ("Dosyayı Düzenleyen", text_field("duzenleyen", "Kurul Başkanı")),
+]))
+body.append(section_title(
+    "Dosya İçeriği — Dizi Pusulası",
+    "Dosyaya konulan her belge için bir satır doldurun. Sıra numarası otomatik verilir; toplam belge ve "
+    "sayfa sayısı aşağıda kendiliğinden hesaplanır."
+))
+body.append(note_box(
+    "Neden gerekli?",
+    "18/10/2019 tarihli ve 30922 sayılı Resmî Gazete'de yayımlanan Devlet Arşiv Hizmetleri Hakkında "
+    "Yönetmelik ve Yönetmeliğin Md.75/5'i uyarınca, dosyalarda bulunan belgeler sıra numarası verilerek "
+    "dizi pusulasına bağlanır; böylece dosyanın eksiksizliği ve belge sırası her zaman denetlenebilir "
+    "hâlde tutulur."
+))
+body.append('''    <datalist id="ekTurleri">
+      <option value="EK-1 Kurul Oluşturma Tutanağı">
+      <option value="EK-2 Sözlü Uyarma Görüşme Notu">
+      <option value="EK-3 Öğrenci Sözleşmesi">
+      <option value="EK-4 Veli Görüşme Tutanağı">
+      <option value="EK-5 Öğretmen Raporu / Kurula Sevk Formu">
+      <option value="EK-6 Kurul Toplantı Çağrısı ve Gündemi">
+      <option value="EK-7 İfade Alma Tutanağı">
+      <option value="EK-8 Kurul Karar Tutanağı">
+      <option value="EK-9 Kararın Veliye Tebliğ Formu">
+      <option value="EK-10 İlçe Kuruluna Gönderme Üst Yazısı">
+      <option value="EK-11 Veli İtiraz Dilekçesi">
+      <option value="EK-12 Yaptırımın Dosyadan Kaldırılması Karar Formu">
+      <option value="Diğer (özgün belge)">
+    </datalist>
+    <table class="dizi-table">
+      <thead>
+        <tr>
+          <th style="width:6%">Sıra</th>
+          <th style="width:13%">Belge Tarihi</th>
+          <th style="width:32%">Belge Türü / Adı</th>
+          <th style="width:9%">Sayfa Sayısı</th>
+          <th style="width:28%">Açıklama</th>
+          <th style="width:12%"></th>
+        </tr>
+      </thead>
+      <tbody id="diziBody"></tbody>
+      <tfoot>
+        <tr>
+          <td colspan="2" style="text-align:right;">TOPLAM</td>
+          <td><span class="dizi-toplam-belge">1</span> belge</td>
+          <td><span class="dizi-toplam-sayfa">1</span> sayfa</td>
+          <td colspan="2"></td>
+        </tr>
+      </tfoot>
+    </table>
+    <button type="button" class="dizi-add-row" data-target="diziBody">+ Satır Ekle</button>
+''')
+body.append(signature_block(["Düzenleyen (Kurul Başkanı)", "Kontrol Eden (Okul Müdürü)"]))
+
+write(13, "DOSYA DİZİ PUSULASI", "Md.75/5 — Devlet Arşiv Hizmetleri Hakkında Yönetmelik", "\n".join(body))
+
 print("ALL DONE")

@@ -189,6 +189,77 @@ function initDynLists() {
   });
 }
 
+/* ---------- Dizi pusulası tablosu (çok sütunlu, satır ekle/sil, toplam sayfa hesabı) ----------
+   HTML iskeleti:
+   <table class="dizi-table">
+     <thead>...</thead>
+     <tbody id="diziBody"></tbody>
+   </table>
+   <button type="button" class="dizi-add-row" data-target="diziBody">+ Satır Ekle</button>
+*/
+function makeDiziRow() {
+  const row = document.createElement("tr");
+  row.className = "dizi-row";
+  row.innerHTML = `
+    <td class="dizi-num"></td>
+    <td><input type="date"></td>
+    <td><input type="text" list="ekTurleri" placeholder="ör. EK-2 Sözlü Uyarma Notu"></td>
+    <td><input type="number" min="0" class="dizi-sayfa" value="1"></td>
+    <td><input type="text" placeholder="Açıklama"></td>
+    <td><button type="button" class="dizi-remove">&times;</button></td>`;
+  bindDiziRow(row);
+  return row;
+}
+function updateDiziTotal(tbody) {
+  let totalSayfa = 0;
+  tbody.querySelectorAll(".dizi-sayfa").forEach((inp) => {
+    const v = parseInt(inp.value, 10);
+    if (!isNaN(v)) totalSayfa += v;
+  });
+  const table = tbody.closest("table");
+  const sayfaCell = table.querySelector(".dizi-toplam-sayfa");
+  const belgeCell = table.querySelector(".dizi-toplam-belge");
+  if (sayfaCell) sayfaCell.textContent = totalSayfa;
+  if (belgeCell) belgeCell.textContent = tbody.querySelectorAll(".dizi-row").length;
+}
+function renumberDiziTable(tbody) {
+  let n = 1;
+  tbody.querySelectorAll(".dizi-row").forEach((row) => {
+    row.querySelector(".dizi-num").textContent = n++;
+    row.querySelector(".dizi-remove").classList.toggle("show", tbody.querySelectorAll(".dizi-row").length > 1);
+  });
+  updateDiziTotal(tbody);
+}
+function bindDiziRow(row) {
+  row.querySelector(".dizi-sayfa").addEventListener("input", () => updateDiziTotal(row.closest("tbody")));
+  row.querySelector(".dizi-remove").addEventListener("click", () => {
+    const tbody = row.closest("tbody");
+    if (tbody.querySelectorAll(".dizi-row").length <= 1) {
+      row.querySelectorAll("input").forEach((i) => (i.value = i.type === "number" ? "1" : ""));
+      renumberDiziTable(tbody);
+      return;
+    }
+    row.remove();
+    renumberDiziTable(tbody);
+  });
+}
+function initDiziTables() {
+  document.querySelectorAll(".dizi-table tbody").forEach((tbody) => {
+    tbody.querySelectorAll(".dizi-row").forEach(bindDiziRow);
+    renumberDiziTable(tbody);
+  });
+  document.querySelectorAll(".dizi-add-row").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const tbody = document.getElementById(btn.dataset.target);
+      if (!tbody) return;
+      const row = makeDiziRow();
+      tbody.appendChild(row);
+      renumberDiziTable(tbody);
+      row.querySelector("input").focus();
+    });
+  });
+}
+
 /* ---------- Formu temizle ---------- */
 function clearForm() {
   if (!confirm("Bu formdaki tüm bilgiler silinecek. Emin misiniz?")) return;
@@ -203,6 +274,12 @@ function clearForm() {
     list.appendChild(row);
     bindDynRow(list, row);
   });
+  document.querySelectorAll(".dizi-table tbody").forEach((tbody) => {
+    tbody.innerHTML = "";
+    const row = makeDiziRow();
+    tbody.appendChild(row);
+    renumberDiziTable(tbody);
+  });
   document.querySelectorAll("textarea:not(.dyn-list textarea)").forEach((el) => {
     el.value = "";
     autoGrow(el);
@@ -216,4 +293,5 @@ document.addEventListener("DOMContentLoaded", () => {
   initNoteBoxes();
   initDynLists();
   initFieldFormatting();
+  initDiziTables();
 });
