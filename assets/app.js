@@ -243,7 +243,7 @@ function makeDynRow(placeholder) {
   row.className = "dyn-row";
   row.innerHTML = `
     <span class="dyn-num"></span>
-    <textarea rows="1" placeholder="${placeholder || ""}"></textarea>
+    <textarea rows="1" placeholder="${placeholder || ""}" autocomplete="off"></textarea>
     <button type="button" class="dyn-remove">&times;</button>`;
   return row;
 }
@@ -324,10 +324,10 @@ function makeDiziRow() {
   row.className = "dizi-row";
   row.innerHTML = `
     <td class="dizi-num"></td>
-    <td><input type="date"></td>
-    <td><input type="text" list="ekTurleri" placeholder="ör. EK-2 Sözlü Uyarma Notu"></td>
-    <td><input type="number" min="0" class="dizi-sayfa" value="1"></td>
-    <td><input type="text" placeholder="Açıklama"></td>
+    <td><input type="date" autocomplete="off"></td>
+    <td><input type="text" list="ekTurleri" placeholder="ör. EK-2 Sözlü Uyarma Notu" autocomplete="off"></td>
+    <td><input type="number" min="0" class="dizi-sayfa" value="1" autocomplete="off"></td>
+    <td><input type="text" placeholder="Açıklama" autocomplete="off"></td>
     <td><button type="button" class="dizi-remove">&times;</button></td>`;
   bindDiziRow(row);
   return row;
@@ -408,8 +408,17 @@ function clearForm() {
   });
 }
 
+/* ---------- Gizlilik: paylaşılan bilgisayarlarda tarayıcı otomatik-doldurma
+   önerilerinin önceki kullanıcının verilerini göstermesini engelle ---------- */
+function disableAutofill() {
+  document.querySelectorAll("input, textarea, select").forEach((el) => {
+    if (!el.hasAttribute("autocomplete")) el.setAttribute("autocomplete", "off");
+  });
+}
+
 /* ---------- Başlat ---------- */
 document.addEventListener("DOMContentLoaded", () => {
+  disableAutofill();
   initSchoolName();
   initAutoGrow();
   initNoteBoxes();
