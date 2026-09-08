@@ -270,7 +270,7 @@ content_bottom = footer_y + 30
 bg_rect = f'<rect x="0" y="0" width="{W}" height="{content_bottom}" fill="{WHITE}"/>'
 svg = f'<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{content_bottom}" viewBox="0 0 {W} {content_bottom}">\n' + bg_rect + "\n" + "\n".join(parts[1:]) + "\n</svg>"
 
-with open("/home/claude/kumkale-site/assets/akis_semasi_interactive.svg", "w", encoding="utf-8") as f:
+with open("/home/claude/kumkale-yaptirim-kiti/assets/akis_semasi_interactive.svg", "w", encoding="utf-8") as f:
     f.write(svg)
 
 print("content_bottom", content_bottom)

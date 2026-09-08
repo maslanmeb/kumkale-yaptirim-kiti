@@ -2,7 +2,7 @@
 from gen_web_common import *
 import os
 
-OUT = "/home/claude/kumkale-site/ek"
+OUT = "/home/claude/kumkale-yaptirim-kiti/ek"
 os.makedirs(OUT, exist_ok=True)
 
 def write(no, title, dayanak, body):
