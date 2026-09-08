@@ -269,7 +269,7 @@ table.imza td{ width:33.33%; vertical-align:top; padding:0 6px; text-align:cente
   .page{ box-shadow:none; margin:0; width:auto; min-height:0; padding: 0; }
   @page{ size: A4; margin: 13mm 15mm; }
   textarea, input{ border-color:#000 !important; }
-  textarea{ overflow: visible !important; resize: none !important; }
+  textarea{ overflow: hidden !important; resize: none !important; }
   .dyn-remove{ display:none; }
   .dizi-remove, .dizi-add-row{ display:none; }
   .note-close{ display:none; }

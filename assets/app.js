@@ -37,6 +37,7 @@ function initAutoGrow() {
   document.querySelectorAll("textarea").forEach((ta) => {
     autoGrow(ta);
     ta.addEventListener("input", () => autoGrow(ta));
+    ta.addEventListener("paste", () => setTimeout(() => autoGrow(ta), 0));
   });
   window.addEventListener("beforeprint", () => {
     document.querySelectorAll("textarea").forEach(autoGrow);
@@ -75,9 +76,140 @@ function printForm() {
   document.querySelectorAll("textarea").forEach(autoGrow);
   requestAnimationFrame(() => {
     document.querySelectorAll("textarea").forEach(autoGrow);
-    setTimeout(() => window.print(), 30);
+    requestAnimationFrame(() => {
+      document.querySelectorAll("textarea").forEach(autoGrow);
+      setTimeout(() => window.print(), 50);
+    });
   });
 }
+
+/* ---------- Word'e Kopyala (panoya HTML + düz metin yazar) ----------
+   Sayfanın doldurulmuş hâlini, form alanlarının GÜNCEL değerleriyle statik
+   metne çevirip panoya kopyalar. Word'ün kendi "HTML'den yapıştır" motoru
+   bunu gerçek Word tablosu/paragrafına dönüştürür. Ek kütüphane gerekmez,
+   tarayıcının Clipboard API'si kullanılır; hiçbir veri sunucuya gitmez.
+
+   Not: Site bir iframe içine gömülü açıldığında modern Clipboard API bazı
+   tarayıcılarda izin vermeyebilir. Bu durumda eski/legacy execCommand("copy")
+   yöntemine otomatik geçilir; o da başarısız olursa kullanıcıya siteyi tam
+   sayfada açması önerilir.
+*/
+function formatFieldForCopy(el) {
+  if (el.tagName === "SELECT") {
+    return el.options[el.selectedIndex] ? el.options[el.selectedIndex].text : "";
+  }
+  if (el.type === "checkbox" || el.type === "radio") {
+    return el.checked ? "☒" : "☐";
+  }
+  if (el.type === "date") {
+    if (!el.value) return "";
+    const [y, m, d] = el.value.split("-");
+    return `${d}.${m}.${y}`;
+  }
+  return el.value || "";
+}
+function legacyCopyHTML(htmlString) {
+  const container = document.createElement("div");
+  container.style.position = "absolute";
+  container.style.left = "0";
+  container.style.top = "0";
+  container.style.width = "900px";
+  container.style.opacity = "0";
+  container.style.pointerEvents = "none";
+  container.style.zIndex = "-1";
+  container.setAttribute("contenteditable", "true");
+  container.innerHTML = htmlString;
+  document.body.appendChild(container);
+  void container.offsetHeight;
+
+  const range = document.createRange();
+  range.selectNodeContents(container);
+  const selection = window.getSelection();
+  selection.removeAllRanges();
+  selection.addRange(range);
+
+  let ok = false;
+  try {
+    ok = document.execCommand("copy");
+  } catch (e) {
+    ok = false;
+  }
+  selection.removeAllRanges();
+  document.body.removeChild(container);
+  return ok;
+}
+async function copyForWord() {
+  const btn = document.getElementById("copyWordBtn");
+  const pageEl = document.querySelector(".page");
+  if (!pageEl) return;
+
+  applyFieldFormatting();
+
+  const originalText = btn.textContent;
+  btn.disabled = true;
+  btn.textContent = "Hazırlanıyor…";
+
+  const clone = pageEl.cloneNode(true);
+
+  clone.querySelectorAll([".dyn-remove", ".note-close", ".dizi-remove", ".dizi-add-row", ".school-hint"].join(",")).forEach((el) => el.remove());
+
+  const liveFields = pageEl.querySelectorAll("input, textarea, select");
+  const cloneFields = clone.querySelectorAll("input, textarea, select");
+  liveFields.forEach((liveEl, i) => {
+    const cloneEl = cloneFields[i];
+    if (!cloneEl) return;
+    const span = document.createElement("span");
+    span.textContent = formatFieldForCopy(liveEl);
+    cloneEl.replaceWith(span);
+  });
+
+  clone.querySelectorAll("[contenteditable]").forEach((el) => el.removeAttribute("contenteditable"));
+
+  clone.querySelectorAll("table").forEach((t) => { t.style.borderCollapse = "collapse"; t.style.width = "100%"; });
+  clone.querySelectorAll("td, th").forEach((c) => {
+    c.style.border = "1px solid #999";
+    c.style.padding = "4px 8px";
+  });
+  clone.querySelectorAll("td.label, th").forEach((c) => {
+    c.style.fontWeight = "bold";
+    c.style.background = "#f0f0f0";
+  });
+
+  const htmlString = `<div>${clone.innerHTML}</div>`;
+  const plainString = clone.innerText || clone.textContent || "";
+  let success = false;
+
+  if (navigator.clipboard && typeof ClipboardItem !== "undefined") {
+    try {
+      await navigator.clipboard.write([
+        new ClipboardItem({
+          "text/html": new Blob([htmlString], { type: "text/html" }),
+          "text/plain": new Blob([plainString], { type: "text/plain" }),
+        }),
+      ]);
+      success = true;
+    } catch (err) {
+      console.warn("Clipboard API başarısız, eski yönteme geçiliyor:", err);
+    }
+  }
+
+  if (!success) {
+    success = legacyCopyHTML(htmlString);
+  }
+
+  if (success) {
+    btn.textContent = "✅ Kopyalandı!";
+    setTimeout(() => { btn.textContent = originalText; btn.disabled = false; }, 2200);
+  } else {
+    alert(
+      "Kopyalama şu an çalışmadı. Bu sayfa bir web sitesine gömülü (iframe) açıldığında bazı tarayıcılar panoya erişimi kısıtlayabilir.\n\n" +
+      "Öneri: Sayfayı 'Tam sayfada açmak için tıklayın' bağlantısından doğrudan açıp tekrar deneyin, ya da 'Yazdır / PDF Al' / 'PDF İndir' seçeneklerini kullanın."
+    );
+    btn.disabled = false;
+    btn.textContent = originalText;
+  }
+}
+
 
 /* ---------- Kapatılabilir bilgi kutuları ---------- */
 function initNoteBoxes() {
@@ -150,6 +282,7 @@ function bindDynRow(list, row) {
   const ta = row.querySelector("textarea");
   const removeBtn = row.querySelector(".dyn-remove");
 
+  ta.addEventListener("paste", () => setTimeout(() => autoGrow(ta), 0));
   ta.addEventListener("input", () => {
     autoGrow(ta);
     const rows = Array.from(list.querySelectorAll(".dyn-row"));
