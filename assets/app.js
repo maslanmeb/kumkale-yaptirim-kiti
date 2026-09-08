@@ -248,12 +248,17 @@ function formatFieldForCopy(el) {
 }
 function legacyCopyHTML(htmlString) {
   const container = document.createElement("div");
-  container.style.position = "fixed";
-  container.style.left = "-9999px";
+  container.style.position = "absolute";
+  container.style.left = "0";
   container.style.top = "0";
+  container.style.width = "900px";
+  container.style.opacity = "0";
+  container.style.pointerEvents = "none";
+  container.style.zIndex = "-1";
   container.setAttribute("contenteditable", "true");
   container.innerHTML = htmlString;
   document.body.appendChild(container);
+  void container.offsetHeight;
 
   const range = document.createRange();
   range.selectNodeContents(container);
